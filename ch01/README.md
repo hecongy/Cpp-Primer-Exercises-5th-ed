@@ -76,3 +76,18 @@ int main()
               << " and " << v2;  
               << " is " << v1+v2 << std::endl;  
               如果程序是合法的，它输出什么？如果程序不合法，原因何在？应该如何修正？
+
+不合法，第二行和第三行的<<运算符无左值，修正如下：
+
+```
+#include<iostream>
+int main()
+{
+    int v1, v2;
+    std::cin>>v1>>v2;
+    std::cout<<"The sum of "<<v1
+             <<" and "<<v2
+	         <<" is "<<v1+v2<<std::endl;
+	return 0;
+}
+```
