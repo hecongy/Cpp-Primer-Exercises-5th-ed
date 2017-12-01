@@ -71,8 +71,8 @@ int main()
 
 [# 练习1.6](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_6.cpp)
 
->解释下面程序片段是否合法。
-```std::cout << "The sum of " << v1;
+>解释下面程序片段是否合法。  
+std::cout << "The sum of " << v1;
           << " and " << v2;
-          << " is " << v1+v2 << std::endl;```
+          << " is " << v1+v2 << std::endl;
 如果程序是合法的，它输出什么？如果程序不合法，原因何在？应该如何修正？
