@@ -50,4 +50,21 @@ int main()
 
 [# 练习1.5](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_5.cpp)
 
->我们将所有输出操作
+>我们将所有输出操作放在一条很长的语句中。重写程序，将每个运算对象的打印操作放在一条独立的语句中。
+
+```
+#include<iostream>
+int main()
+{
+	int v1,v2;
+	std::cin>>v1>>v2;
+	std::cout<<"The product of ";
+	std::cout<<v1;
+	std::cout<<" and ";
+	std::cout<<v2;
+	std::cout<<" is ";
+	std::cout<<v1*v2;
+	std::cout<<std::endl;
+	return 0;
+}
+```
