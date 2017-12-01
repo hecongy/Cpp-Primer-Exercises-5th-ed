@@ -47,3 +47,7 @@ int main()
     return 0;
 }
 ```
+
+[# 练习1.5](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_5.cpp)
+
+>我们将所有输出操作
