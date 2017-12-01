@@ -91,3 +91,11 @@ int main()
     return 0;
 }
 ```
+
+# 练习1.7
+
+>编译一个包含不正确的嵌套注释的程序，观察编译器返回的错误信息。
+
+略
+
+[# 练习1.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_8.cpp)
