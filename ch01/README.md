@@ -119,3 +119,23 @@ int main()
     return 0;
 }
 ```
+
+[练习1.9](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_9.cpp)
+
+>编写程序，使用while循环将50到100的整数相加。
+
+```
+#include<iostream>
+int main()
+{
+    int sum = 0;
+    int i = 50;
+    while(i<=100)
+    {
+        sum+=i;
+	i++;
+    }
+    std::cout<<"The sum of numbers from 50 to 100 is "<<sum<<std::endl;
+    return 0;
+}
+```
