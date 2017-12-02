@@ -139,3 +139,22 @@ int main()
     return 0;
 }
 ```
+
+[练习1.10](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_10.cpp)
+
+>除了++运算符将运算对象的值增加1外，还有一个递减运算符（--）实现将值减少1,。编写程序，使用递减运算符在循环中按递减顺序打印出10到0之间的整数。
+
+```
+#include<iostream>
+int main()
+{
+    std::cout<<"Numbers from ten down to zero are:"<<std::endl;
+    int i = 10;
+    while(i>=0)
+    {
+        std::cout<<i<<std::endl;
+	i--;
+    }
+    return 0;
+}
+```
