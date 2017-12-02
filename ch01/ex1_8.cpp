@@ -1,6 +1,3 @@
-/*
-* Indicate which, if any, of the following output statements are legal:
-*/
 #include<iostream>
 int main()
 {

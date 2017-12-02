@@ -1,7 +1,3 @@
-/*
-* Write a program that reads several transactions and counts
-* how many transactions occur for each ISBN.
-*/
 #include<iostream>
 #include<vector>
 #include "Sales_item.h"
