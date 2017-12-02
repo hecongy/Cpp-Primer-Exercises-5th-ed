@@ -158,3 +158,30 @@ int main()
     return 0;
 }
 ```
+
+[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)
+
+>编写程序，提示用户输入两个整数，打印出这两个整数所指定的范围内的所有整数。
+
+```
+#include<iostream>
+int main()
+{
+    std::cout<<"Please input two integers:"<<std::endl;
+    int val1, val2;
+    std::cin>>val1>>val2;
+    if(val1>val2)
+    {
+        int swap = val1;
+	val1=val2;
+	val2=swap;
+    }
+    std::cout<<"Numbers in the range of "<<val1<<" and "<<val2<<" are:"<<std::endl;
+    while(val1<=val2)
+    {
+        std::cout<<val1<<std::endl;
+	val1++;
+    }
+    return 0;
+}
+```
