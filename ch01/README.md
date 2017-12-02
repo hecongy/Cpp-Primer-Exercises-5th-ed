@@ -236,3 +236,35 @@ int main()
     return 0;
 }
 ```
+
+[练习1.14](#)
+
+>对比for循环和while循环，两种形式的优缺点各是什么？
+
+略
+
+[练习1.15](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_15.cpp)
+
+>编写程序，包含第14页“再探编译”中讨论的常见错误。熟悉编译器生成的错误信息。
+
+略
+
+[练习1.16](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_16.cpp)
+
+>编写程序，从cin读取一组数，输出其和。
+
+```
+#include<iostream>
+int main()
+{
+    std::cout<<"Input integers to continue, non-integers to exit:"<<std::endl;
+    int sum = 0;
+    int val;
+    while(std::cin>>val)
+    {
+        sum+=val;
+    }
+    std::cout<<"Sum of integers input is "<<sum<<std::endl;
+    return 0;
+}
+```
