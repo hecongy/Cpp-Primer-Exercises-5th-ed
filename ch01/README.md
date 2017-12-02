@@ -431,3 +431,9 @@ int main()
 >输入表示多个ISBN的多条销售记录来测试上一个程序，每个ISBN的记录应该聚在一起。
 
 略
+
+[练习1.25](#)
+
+>借助网站上的[Sales_item.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/Sales_item.h)头文件，编译并运行本节给出的书店程序。
+
+略
