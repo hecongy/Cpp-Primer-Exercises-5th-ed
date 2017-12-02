@@ -185,3 +185,10 @@ int main()
     return 0;
 }
 ```
+
+[练习1.12](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_12.cpp)
+
+>下面的for循环完成了什么功能？sum的终值是多少？  
+int sum = 0;  
+for (int i = -100; i<=100; ++i)  
+	sum += i;
