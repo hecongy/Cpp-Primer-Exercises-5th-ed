@@ -313,4 +313,4 @@ int main()
 
 [练习1.20](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_20.cpp)
 
->在网站[http://www.informit.com/title/0321714113](http://www.informit.com/title/0321714113) 上，第1章的代码目录中包含了头文件Sales_item.h。将它拷贝到你自己的动作目录中。用它编写一个程序，读取一组书籍销售记录，将每条记录打印到标准输出上。
+>在网站[http://www.informit.com/title/0321714113](http://www.informit.com/title/0321714113) 上，第1章的代码目录中包含了头文件[Sales_item.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/Sales_item.h)。将它拷贝到你自己的动作目录中。用它编写一个程序，读取一组书籍销售记录，将每条记录打印到标准输出上。
