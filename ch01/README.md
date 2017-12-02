@@ -314,3 +314,120 @@ int main()
 [练习1.20](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_20.cpp)
 
 >在网站[http://www.informit.com/title/0321714113](http://www.informit.com/title/0321714113) 上，第1章的代码目录中包含了头文件[Sales_item.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/Sales_item.h)。将它拷贝到你自己的动作目录中。用它编写一个程序，读取一组书籍销售记录，将每条记录打印到标准输出上。
+
+```
+#include<iostream>
+#include<vector>
+#include "Sales_item.h"
+int main()
+{
+    std::vector<Sales_item> items;
+    Sales_item item;
+    while(std::cin>>item)
+    {
+        items.push_back(item);
+    }
+    for(std::vector<Sales_item>::size_type i = 0;i<items.size();i++)
+    {
+        std::cout<<items[i]<<std::endl;
+    }
+    return 0;
+}
+```
+
+[练习1.21](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_21.cpp)
+
+>编写程序，读取两个ISBN相同的[Sales_item](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/Sales_item.h)对象，输出它们的和。
+
+```
+#include<iostream>
+#include "Sales_item.h"
+int main()
+{
+    Sales_item item1, item2;
+    std::cin>>item1>>item2;
+    if(item1.isbn()!=item2.isbn())
+    {
+        std::cout<<"Wrong input!"<<std::endl;
+    }
+    else
+    {
+        std::cout<<item1+item2;
+    }
+    return 0;
+}
+```
+
+[练习1.22](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_22.cpp)
+
+>编写程序，读取多个具有相同ISBN的销售记录，输出所有记录的和。
+
+```
+#include<iostream>
+#include "Sales_item.h"
+int main()
+{
+    Sales_item item1, item2;
+    std::cin>>item1;
+    while(std::cin>>item2)
+    {
+        if(item1.isbn()!=item2.isbn())
+	{
+	    std::cout<<"Wrong input!"<<std::endl;
+	    break;
+	}
+	else
+	{
+	    item1=item1+item2;
+	}
+    }
+    std::cout<<item1;
+    return 0;
+}
+```
+
+[练习1.23](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_23.cpp)
+
+>编写程序，读取多条销售记录，并统计每个ISBN（每本书）有几条销售记录。
+
+```
+#include<iostream>
+#include<vector>
+#include "Sales_item.h"
+int main()
+{
+    std::vector<std::string> isbns;
+    std::vector<int> nums;
+    Sales_item item;
+    while(std::cin>>item)
+    {
+        bool exist = false;
+	for(std::vector<std::string>::size_type i = 0;i<isbns.size();i++)
+	{
+	    if(isbns[i]==item.isbn())
+	    {
+	        nums[i]++;
+		exist=true;
+		break;
+	    }
+	}
+	if(!exist)
+	{
+	    isbns.push_back(item.isbn());
+	    nums.push_back(1);
+	}
+    }
+    std::cout<<"All ISBNS with their transactions counts are:"<<std::endl;
+    for(std::vector<std::string>::size_type i = 0;i<isbns.size();i++)
+    {
+        std::cout<<"ISBN: "<<isbns[i]<<", counts: "<<nums[i]<<std::endl;
+    }
+    return 0;
+}
+```
+
+[练习1.24](#)
+
+>输入表示多个ISBN的多条销售记录来测试上一个程序，每个ISBN的记录应该聚在一起。
+
+略
