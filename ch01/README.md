@@ -170,17 +170,17 @@ int main()
     std::cout<<"Please input two integers:"<<std::endl;
     int val1, val2;
     std::cin>>val1>>val2;
-    if(val1>val2)
+    if(val1<val2)
     {
         int swap = val1;
 	val1=val2;
 	val2=swap;
     }
     std::cout<<"Numbers in the range of "<<val1<<" and "<<val2<<" are:"<<std::endl;
-    while(val1<=val2)
+    while(val1>=val2)
     {
         std::cout<<val1<<std::endl;
-	val1++;
+	val1--;
     }
     return 0;
 }
@@ -222,14 +222,14 @@ int main()
     std::cout<<"Please input two integers:"<<std::endl;
     int val1, val2;
     std::cin>>val1>>val2;
-    if(val1>val2)
+    if(val1<val2)
     {
         int swap = val1;
 	val1=val2;
 	val2=swap;
     }
     std::cout<<"Numbers in the range of "<<val1<<" and "<<val2<<" are:"<<std::endl;
-    for(int i=val1;i<=val2;++i)
+    for(int i=val1;i>=val2;--i)
     {
         std::cout<<i<<std::endl;
     }
@@ -265,6 +265,48 @@ int main()
         sum+=val;
     }
     std::cout<<"Sum of integers input is "<<sum<<std::endl;
+    return 0;
+}
+```
+
+[练习1.17](#)
+
+>如果输入的所有值都是相等的，本节的程序会输出什么？如果没有重复值，输出又会是怎样的？
+
+如果输入的所有值都是相等的，本节程序会输出这个值和输入次数；如果没有重复值，输出是所有值和他们的输入次数，即1。
+
+[练习1.18](#)
+
+>编译并运行本节的程序，给它输入全部相等的值。再次运行程序，输入没有重复的值。
+
+略
+
+[练习1.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_19.cpp)
+
+>修改你为1.4.1节[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)（第11页）所编写的程序（打印一个范围内的数），使其能处理用户输入的第一个数比第二个数小的情况。
+
+当输入的第一个数比第二个数小时，[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)将交换这两个数，[练习1.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_19.cpp)将提示用户输入错误：
+
+```
+#include<iostream>
+int main()
+{
+    std::cout<<"Please input two integers:"<<std::endl;
+    int val1, val2;
+    std::cin>>val1>>val2;
+    if(val1<val2)
+    {
+        std::cout<<"Wrong input!"<<std::endl;
+    }
+    else
+    {
+        std::cout<<"Numbers in the range of "<<val1<<" and "<<val2<<" are:"<<std::endl;
+	while(val1>=val2)
+	{
+	    std::cout<<val1<<std::endl;
+	    val1--;
+	}
+    }
     return 0;
 }
 ```
