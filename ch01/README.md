@@ -188,7 +188,51 @@ int main()
 
 [练习1.12](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_12.cpp)
 
->下面的for循环完成了什么功能？sum的终值是多少？  
-int sum = 0;  
+>下面的for循环完成了什么功能？sum的终值是多少？  
+int sum = 0;  
 for (int i = -100; i<=100; ++i)  
 	sum += i;
+	
+计算-100到100之间所有整数的和，sum的终值是0。
+
+[练习1.13](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_13.cpp)
+
+>使用for循环重做1.4.1节中的所有练习（第11页）。
+
+```
+#include<iostream>
+int main()
+{
+    //ex1_9
+    int sum = 0;
+    for(int i=50;i<=100;++i)
+    {
+        sum+=i;
+    }
+    std::cout<<"The sum of numbers from 50 to 100 is "<<sum<<std::endl;
+	
+    //ex1_10
+    std::cout<<"Numbers from ten down to zero are:"<<std::endl;
+    for(int i=10;i>=0;--i)
+    {
+        std::cout<<i<<std::endl;
+    }
+	
+    //ex1_11
+    std::cout<<"Please input two integers:"<<std::endl;
+    int val1, val2;
+    std::cin>>val1>>val2;
+    if(val1>val2)
+    {
+        int swap = val1;
+	val1=val2;
+	val2=swap;
+    }
+    std::cout<<"Numbers in the range of "<<val1<<" and "<<val2<<" are:"<<std::endl;
+    for(int i=val1;i<=val2;++i)
+    {
+        std::cout<<i<<std::endl;
+    }
+    return 0;
+}
+```
