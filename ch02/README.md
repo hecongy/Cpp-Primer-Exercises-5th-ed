@@ -369,10 +369,23 @@ long *lp = &i;
 
     (a)定义int型变量i和指向int型对象的顶层const指针cp
     (b)定义指向int型对象的指针p1和指向int型对象的顶层const指针p2
-    (c)定义const int型变量ic和指向ic的int型引用，`不合法`，不能将非const引用指向const对象
-    (d)定义指向const int型变量的顶层const指针p3，`不合法`，const指针必须初始化
+    (c)定义const int型变量ic和指向ic的int型引用，不合法，不能将非const引用指向const对象
+    (d)定义指向const int型变量的顶层const指针p3，不合法，const指针必须初始化
     (e)定义指向const int型变量的底层const指针p
     
 [练习2.29](#)
 
->假设已有上一个练习中定义的
+>假设已有上一个练习中定义的那些变量，则下面的哪些语句是合法的？请说明原因。  
+(a) i = ic;  
+(b) p1 = p3;  
+(c) p1 = &ic;  
+(d) p3 = &ic;  
+(e) p2 = p1;  
+(f) ic = \*p3;
+
+    (a)合法，const对象可读（拷贝初始化）
+    (b)不合法，不能将p1指向const int对象
+    (c)不合法，同上
+    (d)不合法，p3是一个顶层const，不可赋值
+    (e)不合法，p2是一个顶层const，不可赋值
+    (f)不合法，ic是一个顶层const，不可赋值
