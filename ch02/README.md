@@ -15,6 +15,7 @@
 [练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_4.cpp)
 
 >读程序写结果。  
+```
 unsigned u = 10, u2 = 42;  
 std::cout << u2 - u << std::endl;  
 std::cout << u - u2 << std::endl;  
@@ -23,6 +24,7 @@ std::cout << i2 - i << std::endl;
 std::cout << i - i2 << std::endl;  
 std::cout << i - u << std::endl;  
 std::cout << u - i << std::endl;
+```
 
     结果分别是30、4294967264、32、-32、0、0。  
     无符号整数超出表示范围，值为取模后的余数（P33），所以第二个运算的结果是4294967264；  
