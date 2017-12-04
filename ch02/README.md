@@ -14,7 +14,7 @@ float和double都是浮点类型，区别在于它们可表示的精度不同，
 
 [练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_3.cpp)
 
->读程序写结果
+>读程序写结果  
 unsigned u = 10, u2 = 42;  
 std::cout << u2 - u << std::endl;  
 std::cout << u - u2 << std::endl;  
