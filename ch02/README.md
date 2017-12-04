@@ -2,15 +2,15 @@
 
 >类型int、long、long long和short的区别是什么？无符号类型和带符号类型的区别是什么？float和double的区别是什么？
 
-int、long、long long和short都是带符号整数类型，区别在于它们的尺寸不同，可以表示的范围也不同，short->int->long->long long范围依次增大。  
-float和double都是浮点类型，区别在于它们可表示的精度不同，double类型的精度比float类型的精度高。
+    int、long、long long和short都是带符号整数类型，区别在于它们的尺寸不同，可以表示的范围也不同，short->int->long->long long范围依次增大。  
+    float和double都是浮点类型，区别在于它们可表示的精度不同，double类型的精度比float类型的精度高。
 
 [练习2.2](#)
 
 >计算按揭贷款时，对于利率、本金和付款分别应选择何种数据类型？说明你的理由。
 
-利率：float，利率的有效位数一般在float能表示的范围之内；  
-本金和付款：double，因为double类型的精度更高，允许的有效数字位数更高，而本金和付款可能具有多位有效数字。
+    利率：float，利率的有效位数一般在float能表示的范围之内；  
+    本金和付款：double，因为double类型的精度更高，允许的有效数字位数更高，而本金和付款可能具有多位有效数字。
 
 [练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_4.cpp)
 
@@ -24,9 +24,9 @@ std::cout << i - i2 << std::endl;
 std::cout << i - u << std::endl;  
 std::cout << u - i << std::endl;
 
-结果分别是30、4294967264、32、-32、0、0。  
-无符号整数超出表示范围，值为取模后的余数（P33），所以第二个运算的结果是4294967264；  
-当一个算术表达式中既有无符号数又有int值时，int会被转换成无符号数（P34），所以最后两个运算的结果都是unsigned类型。
+    结果分别是30、4294967264、32、-32、0、0。  
+    无符号整数超出表示范围，值为取模后的余数（P33），所以第二个运算的结果是4294967264；  
+    当一个算术表达式中既有无符号数又有int值时，int会被转换成无符号数（P34），所以最后两个运算的结果都是unsigned类型。
 
 [练习2.4](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_4.cpp)
 
@@ -57,10 +57,10 @@ int main()
 (c) 3.14, 3.14f, 3.14L  
 (d) 10, 10u, 10., 10e-2
 
-(a) char, wchar_t, string, 宽字符string  
-(b) int, unsigned, long, unsigned long, 八进制表示的int, 十六进制表示的int  
-(c) double, float, long double  
-(d) int, unsigned, double, double
+    (a) char, wchar_t, string, 宽字符string  
+    (b) int, unsigned, long, unsigned long, 八进制表示的int, 十六进制表示的int  
+    (c) double, float, long double  
+    (d) int, unsigned, double, double
 
 [练习2.6](#)
 
@@ -68,7 +68,7 @@ int main()
 int month = 9, day = 7;  
 int month = 09, day = 07;
 
-有区别，第二组的定义表示为八进制，所以month的定义是不合法的，因为八进制的基数是8（9>8-1）。
+    有区别，第二组的定义表示为八进制，所以month的定义是不合法的，因为八进制的基数是8（9>8-1）。
 
 [练习2.7](#)
 
@@ -78,10 +78,10 @@ int month = 09, day = 07;
 (c) 1024f  
 (d) 3.14L
 
-(a)表示"Who goes with F\145rgus?\012"，类型是string  
-(b)表示3.14，类型是long double  
-(c)表示1024.0，类型是float  
-(d)表示3.14，类型是long double
+    (a)表示"Who goes with F\145rgus?\012"，类型是string  
+    (b)表示3.14，类型是long double  
+    (c)表示1024.0，类型是float  
+    (d)表示3.14，类型是long double
 
 [练习2.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_8.cpp)
 
@@ -105,13 +105,13 @@ int main()
 (c) double salary = wage = 9999.99;  
 (d) int i = 3.14;
 
-(a) 意图：定义int类型的input_value并从标准输入流输入，非法，类型名不可以出现在>>后，改正：  
-int input_value;  
-std::cin >> input_value;  
-(b) 含义：定义int类型的i并使用列表初始化向其赋值3.14，合法，但是会丢失信息，i的值为3  
-(c) 意图：定义double类型的salary和wage，并向它们赋值9999.99，非法，wage未定义，改正：  
-double salary = 9999.99, wage = 9999.99;  
-(d) 含义：定义int类型的i并使用拷贝初始化向其赋值3.14，合法，但是会丢失信息，i的值为3
+    (a) 意图：定义int类型的input_value并从标准输入流输入，非法，类型名不可以出现在>>后，改正：  
+        int input_value;  
+        std::cin >> input_value;  
+    (b) 含义：定义int类型的i并使用列表初始化向其赋值3.14，合法，但是会丢失信息，i的值为3  
+    (c) 意图：定义double类型的salary和wage，并向它们赋值9999.99，非法，wage未定义，改正：  
+        double salary = 9999.99, wage = 9999.99;  
+    (d) 含义：定义int类型的i并使用拷贝初始化向其赋值3.14，合法，但是会丢失信息，i的值为3
 
 [练习2.10](#)
 
@@ -124,10 +124,10 @@ int main()
     std::string local_str;  
 }
 
-global_str: 空字符串  
-global_int: 0  
-local_int: 未定义  
-local_str: 空字符串
+    global_str: 空字符串  
+    global_int: 0  
+    local_int: 未定义  
+    local_str: 空字符串
 
 [练习2.11](#)
 
@@ -136,7 +136,7 @@ local_str: 空字符串
 (b) int iy;  
 (c) extern int iz;
 
-(a)、(b)为定义，(c)为声明
+    (a)、(b)为定义，(c)为声明
 
 [练习2.12](#)
 
@@ -147,9 +147,9 @@ local_str: 空字符串
 (d) int 1_or_2 = 1;  
 (e) double Double = 3.14;
 
-(a)非法，不能使用关键字double作为变量名  
-(c)非法，标识符中只能包含字母、数字、下画线，不能含有"-"  
-(d)非法，标识符不能以数字开头
+    (a)非法，不能使用关键字double作为变量名  
+    (c)非法，标识符中只能包含字母、数字、下画线，不能含有"-"  
+    (d)非法，标识符不能以数字开头
 
 [练习2.13](#)
 
