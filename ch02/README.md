@@ -32,7 +32,22 @@ std::cout << u - i << std::endl;
 
 >编写程序检查你的估计是否正确，如果不正确，请仔细研读本节直到弄明白问题所在。
 
-略
+```
+#include<iostream>
+int main()
+{
+    unsigned u=10,u2=42;
+    std::cout<<u2-u<<std::endl;
+    std::cout<<u-u2<<std::endl;
+    
+    int i=10,i2=42;
+    std::cout<<i2-i<<std::endl;
+    std::cout<<i-i2<<std::endl;
+    
+    std::cout<<i-u<<std::endl;
+    std::cout<<u-i<<std::endl;
+}
+```
 
 [练习2.5](#)
 
@@ -59,7 +74,9 @@ int month = 09, day = 07;
 
 >下述字面值表示何种含义？它们各自的数据类型是什么？  
 (a) "Who goes with F\145rgus?\012"  
-(b) 3.14e1L (c)1024f  (d)3.14L
+(b) 3.14e1L  
+(c) 1024f  
+(d) 3.14L
 
 (a)表示"Who goes with F\145rgus?\012"，类型是string  
 (b)表示3.14，类型是long double  
@@ -121,3 +138,15 @@ local_str: 空字符串
 
 (a)、(b)为定义，(c)为声明
 
+[练习2.12](#)
+
+>请指出下面的名字中哪些是非法的？  
+(a) int double = 3.14;  
+(b) int \_;  
+(c) int catch-22;  
+(d) int 1_or_2 = 1;  
+(e) double Double = 3.14;
+
+(a)非法，不能使用关键字double作为变量名  
+(c)非法，标识符中只能包含字母、数字、下画线，不能含有"-"  
+(d)非法，标识符不能以数字开头
