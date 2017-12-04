@@ -336,3 +336,24 @@ long *lp = &i;
 
     (a)不合法，const修饰的变量需要初始化
     (d)不合法，const修饰的变量不可修改
+    
+[练习2.27](#)
+
+>下面的哪些初始化是合法的？请说明原因。  
+(a) int i = -1, &r = 0;  
+(b) int \*const p2 = &i2;  
+(c) const int i = -1, &r = 0;  
+(d) const int \*const p3 = &i2;  
+(e) const int \*p1 = &i2;  
+(f) const int &const r2;  
+(g) const int i2 = i, &r = i;
+
+    (a)不合法，引用必须用对象初始化
+    (b)合法，顶层const
+    (c)合法，const修饰的引用可以使用字面值初始化
+    (d)合法，可以将const int*指向非const int对象
+    (e)合法，可以将const int*指向非const int对象
+    (f)不合法，引用必须初始化
+    (g)合法，可以使用非const int拷贝初始化const int，也可以将const int&绑定到非const int对象上
+    
+ 
