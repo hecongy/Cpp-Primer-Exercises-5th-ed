@@ -448,8 +448,7 @@ g = 42;
 
     a、b、c的值都变为42
     d、e是指针，因此不能使用字面值赋值，非法  
-    g是常量引用，因此不可向其绑定的对象赋值，非法
-    
+    g是常量引用，因此不可向其绑定的对象赋值，非法   
     
 [练习2.34](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_34.cpp)
 
