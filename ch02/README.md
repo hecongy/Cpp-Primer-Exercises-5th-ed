@@ -106,3 +106,8 @@ int main()
     int local_int;  
     std::string local_str;  
 }
+
+global_str: 空字符串  
+global_int: 0  
+local_int: 未定义  
+local_str: 空字符串
