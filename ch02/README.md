@@ -372,3 +372,7 @@ long *lp = &i;
     (c)定义const int型变量ic和指向ic的int型引用，`不合法`，不能将非const引用指向const对象
     (d)定义指向const int型变量的顶层const指针p3，`不合法`，const指针必须初始化
     (e)定义指向const int型变量的底层const指针p
+    
+[练习2.29](#)
+
+>假设已有上一个练习中定义的
