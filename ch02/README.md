@@ -79,3 +79,30 @@ int main()
     return 0;
 }
 ```
+
+[练习2.9](#)
+
+>解释下列定义的含义。对于非法的定义，请说明错在何处并将其改正。  
+(a) std::cin >> int input_value;  
+(b) int i = {3.14};  
+(c) double salary = wage = 9999.99;  
+(d) int i = 3.14;
+
+(a) 意图：定义int类型的input_value并从标准输入流输入，非法，类型名不可以出现在>>后，改正：  
+int input_value;  
+std::cin >> input_value;  
+(b) 含义：定义int类型的i并使用列表初始化向其赋值3.14，合法，但是会丢失信息，i的值为3  
+(c) 意图：定义double类型的salary和wage，并向它们赋值9999.99，非法，wage未定义，改正：  
+double salary = 9999.99, wage = 9999.99;  
+(d) 含义：定义int类型的i并使用拷贝初始化向其赋值3.14，合法，但是会丢失信息，i的值为3
+
+[练习2.10](#)
+
+>下列变量的初始值分别是什么？  
+std::string global_str;  
+int global_int;  
+int main()  
+{  
+    int local_int;
+    std::string local_str;
+}
