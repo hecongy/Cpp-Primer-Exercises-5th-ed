@@ -431,3 +431,42 @@ int null = 0, *p = null;
 ```
 constexpr int null = 0, *p = null;
 ```
+
+
+[练习2.33](#)
+
+>利用本节定义的变量，判断下列语句的运行结果。
+
+```
+a = 42;
+b = 42;
+c = 42;
+d = 42;
+e = 42;
+g = 42;
+```
+
+    a、b、c的值都变为42
+    d、e是指针，因此不能使用字面值赋值，非法  
+    g是常量引用，因此不可向其绑定的对象赋值，非法
+    
+    
+[练习2.34](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_34.cpp)
+
+>基于上一个练习中变量和语句编写一段程序，输出赋值后变量的内容，你刚才的推断正确吗？如果不对，请反复研读本节的示例直到你明白错在何处为止。
+
+    略
+    
+[练习2.35](#)
+
+>判断下列定义推断出的类型是什么，然后编写程序进行验证。
+
+```
+const int i = 42;
+auto j = i; //int
+const auto &k = i; //const int&
+auto *p = &i; //const int*
+const auto j2 = i, &k2 = i; //j2: const int, k2: const int&
+```
+
+    见注释
