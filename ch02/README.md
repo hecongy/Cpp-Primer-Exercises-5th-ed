@@ -111,3 +111,13 @@ global_str: 空字符串
 global_int: 0  
 local_int: 未定义  
 local_str: 空字符串
+
+[练习2.11](#)
+
+>指出下面的语句是声明还是定义  
+(a) extern int ix = 1024;  
+(b) int iy;  
+(c) extern int iz;
+
+(a)、(b)为定义，(c)为声明
+
