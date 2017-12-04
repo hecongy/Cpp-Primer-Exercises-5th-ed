@@ -333,5 +333,6 @@ long *lp = &i;
 (c) const int sz = cnt;  
 (d) ++cnt; ++sz;
 
-    (a)不合法，const修饰的变量需要初始化
-    (d)不合法，const修饰的变量不可修改
+
+    (a)不合法，const修饰的变量需要初始化
+    (d)不合法，const修饰的变量不可修改
