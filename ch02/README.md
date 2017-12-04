@@ -118,6 +118,7 @@ int main()
 [练习2.10](#)
 
 >下列变量的初始值分别是什么？  
+```
 std::string global_str;  
 int global_int;  
 int main()  
@@ -125,6 +126,7 @@ int main()
     int local_int;  
     std::string local_str;  
 }
+```
 
     global_str: 空字符串  
     global_int: 0  
