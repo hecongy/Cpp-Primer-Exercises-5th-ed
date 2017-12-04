@@ -14,7 +14,7 @@ float和double都是浮点类型，区别在于它们可表示的精度不同，
 
 [练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_3.cpp)
 
->读程序写结果  
+>读程序写结果。  
 unsigned u = 10, u2 = 42;  
 std::cout << u2 - u << std::endl;  
 std::cout << u - u2 << std::endl;  
@@ -26,7 +26,7 @@ std::cout << u - i << std::endl;
 
 结果分别是30、4294967264、32、-32、0、0。  
 无符号整数超出表示范围，值为取模后的余数（P33），所以第二个运算的结果是4294967264；  
-当一个算术表达式中既有无符号数又有int值时，int会被转换成无符号数，所以最后两个运算的结果都是unsigned类型。
+当一个算术表达式中既有无符号数又有int值时，int会被转换成无符号数（P34），所以最后两个运算的结果都是unsigned类型。
 
 [练习2.4](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_3.cpp)
 
@@ -34,4 +34,32 @@ std::cout << u - i << std::endl;
 
 略
 
-[练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_3.cpp)
+[练习2.5](#)
+
+>指出下述字面值的数据类型并说明每一组内几种字面值的区别。  
+(a) 'a', L'a', "a", L"a"  
+(b) 10, 10u, 10L, 10uL, 012, 0xC  
+(c) 3.14, 3.14f, 3.14L  
+(d) 10, 10u, 10., 10e-2
+
+(a) char, wchar_t, string, 宽字符string  
+(b) int, unsigned, long, unsigned long, 八进制表示的int, 十六进制表示的int  
+(c) double, float, long double  
+(d) int, unsigned, double, double
+
+[练习2.6](#)
+
+>下面两组定义是否有区别，如果有，请叙述之：  
+int month = 9, day = 7;  
+int month = 09, day = 07;
+
+有区别，第二组的定义表示为八进制，所以month的定义是不合法的，因为八进制的基数是8（9>8-1）。
+
+[练习2.7](#)
+
+>下述字面值表示何种含义？它们各自的数据类型是什么？  
+(a) "Who goes with F\145rgus?\012"  
+(b) 3.14e1L (c)1024f  (d)3.14L
+
+(a)表示"Who goes with F\145rgus?\012"，类型是string  
+(b)表示3.14，类型是long double，(c)表示1024.0，类型是float，(d)表示3.14，类型是long double
