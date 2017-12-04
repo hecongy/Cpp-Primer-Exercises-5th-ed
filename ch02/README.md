@@ -463,7 +463,7 @@ g = 42;
 
 ```
 const int i = 42;
-auto j = i; //int
+auto j = i; //int, auto忽略顶层const
 const auto &k = i; //const int&
 auto *p = &i; //const int*
 const auto j2 = i, &k2 = i; //j2: const int, k2: const int&
