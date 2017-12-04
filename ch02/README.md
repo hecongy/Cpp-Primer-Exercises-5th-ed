@@ -62,4 +62,6 @@ int month = 09, day = 07;
 (b) 3.14e1L (c)1024f  (d)3.14L
 
 (a)表示"Who goes with F\145rgus?\012"，类型是string  
-(b)表示3.14，类型是long double，(c)表示1024.0，类型是float，(d)表示3.14，类型是long double
+(b)表示3.14，类型是long double  
+(c)表示1024.0，类型是float  
+(d)表示3.14，类型是long double
