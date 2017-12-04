@@ -291,7 +291,7 @@ int main()
 
 >修改你为1.4.1节[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)（第11页）所编写的程序（打印一个范围内的数），使其能处理用户输入的第一个数比第二个数小的情况。
 
-	当输入的第一个数比第二个数小时，[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)将交换这两个数，[练习1.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_19.cpp)将提示用户输入错误：
+	当输入的第一个数比第二个数小时，练习1.11将交换这两个数，练习1.19将提示用户输入错误：
 
 ```
 #include<iostream>
