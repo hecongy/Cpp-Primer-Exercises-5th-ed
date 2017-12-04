@@ -227,3 +227,31 @@ std::cout << i << " " << ri << std::endl;
 
 
     10 10
+    
+[练习2.18](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_18.cpp)
+
+>编写代码分别更改指针的值以及指针所指对象的值。
+
+```
+#include<iostream>
+int main()
+{
+    int num1 = 5;
+    int num2 = 6;
+    int *p = &num1;
+    std::cout<<"num1 change from "<<*p;
+    *p = 7;
+    std::cout<<" to "<<*p<<std::endl;
+    
+    std::cout<<"p pointers from "<<*p;
+    p = &num2;
+    std::cout<<" to "<<*p<<std::endl;
+    return 0;
+}
+```
+
+[练习2.19](#)
+
+>说明指针和引用的主要区别
+
+    dddddddd
