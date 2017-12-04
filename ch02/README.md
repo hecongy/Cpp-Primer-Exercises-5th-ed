@@ -317,13 +317,13 @@ long *lp = &i;
 [练习2.25](#)
 
 >说明下列变量的类型和值。  
-(a) int* ip, i, &r = i;  
+(a) int\* ip, i, &r = i;  
 (b) int i, \*ip = 0;  
-(c) int* ip, ip2;
+(c) int\* ip, ip2;
 
-    (a)ip: int*类型，值为空；i: int类型，值由定义位置决定（默认初始化）；r: int&类型，绑定到i上
+    (a)ip: int\*类型，值为空；i: int类型，值由定义位置决定（默认初始化）；r: int&类型，绑定到i上
     (b)同上
-    (c)ip: int*类型，值为空；ip2: int类型，值由定义位置决定（默认初始化）
+    (c)ip: int\*类型，值为空；ip2: int类型，值由定义位置决定（默认初始化）
     
 [练习2.26](#)
 
@@ -348,12 +348,13 @@ long *lp = &i;
 (f) const int &const r2;  
 (g) const int i2 = i, &r = i;
 
-    (a)不合法，引用必须用对象初始化
-    (b)合法，顶层const
-    (c)合法，const修饰的引用可以使用字面值初始化
-    (d)合法，可以将const int*指向非const int对象
-    (e)合法，可以将const int*指向非const int对象
-    (f)不合法，引用必须初始化
-    (g)合法，可以使用非const int拷贝初始化const int，也可以将const int&绑定到非const int对象上
+
+    (a)不合法，引用必须用对象初始化
+    (b)合法，顶层const
+    (c)合法，const修饰的引用可以使用字面值初始化
+    (d)合法，可以将const int\*指向非const int对象
+    (e)合法，可以将const int\*指向非const int对象
+    (f)不合法，引用必须初始化
+    (g)合法，可以使用非const int拷贝初始化const int，也可以将const int&绑定到非const int对象上
     
  
