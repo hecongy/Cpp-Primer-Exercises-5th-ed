@@ -389,3 +389,31 @@ long *lp = &i;
     (d)不合法，p3是一个顶层const，不可赋值
     (e)不合法，p2是一个顶层const，不可赋值
     (f)不合法，ic是一个顶层const，不可赋值
+    
+[练习2.30](#)
+
+>对于下面的这些语句，请说明对象被声明成了顶层const还是底层const？
+
+```
+const int v2 = 0;
+int v1 = v2;
+int *p1 = &v1, &r1 = v1;
+const int *p2 = &v2, *const p3 = &i, &r2 = v2;
+```
+
+    顶层const: v2、p3
+    底层const: p2、r2
+    
+[练习2.31](#)
+
+>假设已有上一个练习中所做的那些声明，则下面的哪些语句是合法的？请说明顶层const和底层const再每个例子中有何体现。
+
+```
+r1 = v2; //合法，拷贝赋值
+p1 = p2; //不合法，const int*不能转换成int*
+p2 = p1; //合法，int*可以转换成const int*
+p1 = p3; //不合法，const int*不能转换成int*
+p2 = p3; //合法，拷贝赋值
+```
+
+    见注释
