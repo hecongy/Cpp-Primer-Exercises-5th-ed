@@ -12,7 +12,7 @@ float和double都是浮点类型，区别在于它们可表示的精度不同，
 利率：float，利率的有效位数一般在float能表示的范围之内；  
 本金和付款：double，因为double类型的精度更高，允许的有效数字位数更高，而本金和付款可能具有多位有效数字。
 
-[练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_3.cpp)
+[练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_4.cpp)
 
 >读程序写结果。  
 unsigned u = 10, u2 = 42;  
@@ -28,7 +28,7 @@ std::cout << u - i << std::endl;
 无符号整数超出表示范围，值为取模后的余数（P33），所以第二个运算的结果是4294967264；  
 当一个算术表达式中既有无符号数又有int值时，int会被转换成无符号数（P34），所以最后两个运算的结果都是unsigned类型。
 
-[练习2.4](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_3.cpp)
+[练习2.4](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_4.cpp)
 
 >编写程序检查你的估计是否正确，如果不正确，请仔细研读本节直到弄明白问题所在。
 
@@ -65,3 +65,17 @@ int month = 09, day = 07;
 (b)表示3.14，类型是long double  
 (c)表示1024.0，类型是float  
 (d)表示3.14，类型是long double
+
+[练习2.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_8.cpp)
+
+>请利用转义序列编写一段程序，要求先输出2M，然后转到新一行。修改程序使其先输出2，然后输出制表符，再输出M，最后转到新一行。
+
+```
+#include<iostream>
+int main()
+{
+    std::cout<<"2M\n";
+    std::cout<<"2\tM\n";
+    return 0;
+}
+```
