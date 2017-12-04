@@ -72,12 +72,14 @@ int main()
 [练习1.6](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_6.cpp)
 
 >解释下面程序片段是否合法。  
-    std::cout << "The sum of " << v1;  
+```
+std::cout << "The sum of " << v1;  
               << " and " << v2;  
               << " is " << v1+v2 << std::endl;  
-              如果程序是合法的，它输出什么？如果程序不合法，原因何在？应该如何修正？
+```
+>如果程序是合法的，它输出什么？如果程序不合法，原因何在？应该如何修正？
 
-不合法，第二行和第三行的<<运算符无左值，修正如下：
+	不合法，第二行和第三行的<<运算符无左值，修正如下：
 
 ```
 #include<iostream>
@@ -96,7 +98,7 @@ int main()
 
 >编译一个包含不正确的嵌套注释的程序，观察编译器返回的错误信息。
 
-略
+	略
 
 [练习1.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_8.cpp)
 
@@ -109,7 +111,7 @@ std::cout << /\* "\*/" /\* "/\*" \*/;
 ```
 >预编译这些语句会产生什么样的结果，实际编译这些语句来验证你的答案（编写一个小程序，每次将上述一条语句作为其主体），改正每个编译错误。
 
-前两条合法，后两条相当于只有一个引号，所以缺少配对，改正如下：
+	前两条合法，后两条相当于只有一个引号，所以缺少配对，改正如下：
 ```
 #include<iostream>
 int main()
@@ -191,11 +193,13 @@ int main()
 [练习1.12](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_12.cpp)
 
 >下面的for循环完成了什么功能？sum的终值是多少？  
+```
 int sum = 0;  
 for (int i = -100; i<=100; ++i)  
 	sum += i;
+```
 	
-计算-100到100之间所有整数的和，sum的终值是0。
+	计算-100到100之间所有整数的和，sum的终值是0。
 
 [练习1.13](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_13.cpp)
 
@@ -243,13 +247,13 @@ int main()
 
 >对比for循环和while循环，两种形式的优缺点各是什么？
 
-略
+	略
 
 [练习1.15](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_15.cpp)
 
 >编写程序，包含第14页“再探编译”中讨论的常见错误。熟悉编译器生成的错误信息。
 
-略
+	略
 
 [练习1.16](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_16.cpp)
 
@@ -275,19 +279,19 @@ int main()
 
 >如果输入的所有值都是相等的，本节的程序会输出什么？如果没有重复值，输出又会是怎样的？
 
-如果输入的所有值都是相等的，本节程序会输出这个值和输入次数；如果没有重复值，输出是所有值和他们的输入次数，即1。
+	如果输入的所有值都是相等的，本节程序会输出这个值和输入次数；如果没有重复值，输出是所有值和他们的输入次数，即1。
 
 [练习1.18](#)
 
 >编译并运行本节的程序，给它输入全部相等的值。再次运行程序，输入没有重复的值。
 
-略
+	略
 
 [练习1.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_19.cpp)
 
 >修改你为1.4.1节[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)（第11页）所编写的程序（打印一个范围内的数），使其能处理用户输入的第一个数比第二个数小的情况。
 
-当输入的第一个数比第二个数小时，[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)将交换这两个数，[练习1.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_19.cpp)将提示用户输入错误：
+	当输入的第一个数比第二个数小时，[练习1.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_11.cpp)将交换这两个数，[练习1.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_19.cpp)将提示用户输入错误：
 
 ```
 #include<iostream>
@@ -432,10 +436,10 @@ int main()
 
 >输入表示多个ISBN的多条销售记录来测试上一个程序，每个ISBN的记录应该聚在一起。
 
-略
+	略
 
 [练习1.25](#)
 
 >借助网站上的[Sales_item.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/Sales_item.h)头文件，编译并运行本节给出的书店程序。
 
-略
+	略
