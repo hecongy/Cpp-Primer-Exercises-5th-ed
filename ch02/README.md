@@ -358,3 +358,17 @@ long *lp = &i;
     (g)合法，可以使用非const int拷贝初始化const int，也可以将const int&绑定到非const int对象上
     
  
+[练习2.28](#)
+
+>说明下面的这些定义是什么意思，挑出其中不合法的。  
+(a) int i, \*const cp;  
+(b) int \*p1, \*const p2;  
+(c) const int ic, &r = ic;  
+(d) const int \*const p3;  
+(e) const int \*p;
+
+(a)定义int型变量i和指向int型对象的顶层const指针cp
+(b)定义指向int型对象的指针p1和指向int型对象的顶层const指针p2
+(c)定义const int型变量ic和指向ic的int型引用，`不合法`，不能将非const引用指向const对象
+(d)定义指向const int型变量的顶层const指针p3，`不合法`，const指针必须初始化
+(e)定义指向const int型变量的底层const指针p
