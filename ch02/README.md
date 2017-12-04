@@ -367,8 +367,8 @@ long *lp = &i;
 (d) const int \*const p3;  
 (e) const int \*p;
 
-(a)定义int型变量i和指向int型对象的顶层const指针cp
-(b)定义指向int型对象的指针p1和指向int型对象的顶层const指针p2
-(c)定义const int型变量ic和指向ic的int型引用，`不合法`，不能将非const引用指向const对象
-(d)定义指向const int型变量的顶层const指针p3，`不合法`，const指针必须初始化
-(e)定义指向const int型变量的底层const指针p
+    (a)定义int型变量i和指向int型对象的顶层const指针cp
+    (b)定义指向int型对象的指针p1和指向int型对象的顶层const指针p2
+    (c)定义const int型变量ic和指向ic的int型引用，`不合法`，不能将非const引用指向const对象
+    (d)定义指向const int型变量的顶层const指针p3，`不合法`，const指针必须初始化
+    (e)定义指向const int型变量的底层const指针p
