@@ -709,3 +709,7 @@ int main()
     return 0;
 }
 ```
+
+[练习2.42](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_42.cpp)
+
+>根据你自己的理解重写一个[Sales_data.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/Sales_data.h)头文件，并以此为基础重做[2.6.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_41.cpp)（第67页）的练习。
