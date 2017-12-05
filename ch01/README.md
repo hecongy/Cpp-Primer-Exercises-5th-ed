@@ -438,7 +438,7 @@ int main()
 
 	略
 
-[练习1.25](#)
+[练习1.25](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_25.cpp)
 
 >借助网站上的[Sales_item.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/Sales_item.h)头文件，编译并运行本节给出的书店程序。
 
