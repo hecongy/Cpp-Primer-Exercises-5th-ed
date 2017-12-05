@@ -552,26 +552,26 @@ struct Sales_data {
     public:
 	bool input(std::istream &in)
 	{
-		in >> bookNo >>units_sold >>price;
-		if(!in) return false;
-		revenue = units_sold * price;
-		return true;
+	    in >> bookNo >>units_sold >>price;
+	    if(!in) return false;
+	    revenue = units_sold * price;
+	    return true;
 	}
 
 	void add(Sales_data data)
 	{
-		units_sold += data.units_sold;
-		revenue += data.revenue;
+	    units_sold += data.units_sold;
+	    revenue += data.revenue;
 	}
 
 	void output(std::ostream &out)
 	{
-		out << bookNo << " " << units_sold << " " << revenue << " " << price << std::endl;
+	    out << bookNo << " " << units_sold << " " << revenue << " " << price << std::endl;
 	}
 
 	void print(std::ostream &out)
 	{
-		out << "Revenue of " << bookNo << " is " << revenue << std::endl;
+	    out << "Revenue of " << bookNo << " is " << revenue << std::endl;
 	}
 };
 
@@ -585,3 +585,57 @@ int main()
 
 >使用你自己的Sales_data类重写[1.5.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第20页）、[1.5.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第21页）和[1.6节]((https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md))（第22页）的练习。眼下先把Sales_data类的定义和main函数放在同一个文件里。
 
+```
+#include<iostream>
+#include<vector>
+#include<string>
+#include <functional>
+struct Sales_data {
+
+    private:
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double price = 0.0;
+	double revenue = 0.0;
+	
+    public:
+	bool input(std::istream &in)
+	{
+	    in >> bookNo >>units_sold >>price;
+	    if(!in) return false;
+	    revenue = units_sold * price;
+	    return true;
+	}
+
+	void add(Sales_data data)
+	{
+	    units_sold += data.units_sold;
+	    revenue += data.revenue;
+	}
+
+	void output(std::ostream &out)
+	{
+	    out << bookNo << " " << units_sold << " " << revenue << " " << price << std::endl;
+	}
+
+	void print(std::ostream &out)
+	{
+	    out << "Revenue of " << bookNo << " is " << revenue << std::endl;
+	}
+};
+
+int main()
+{
+    std::vector<Sales_data> items;
+    Sales_data item;
+    while (item.input(std::ref(std::cin)))
+    {
+        items.push_back(item);
+    }
+    for (std::vector<Sales_data>::size_type i = 0; i<items.size(); i++)
+    {
+	items[i].output(std::ref(std::cout));
+    }
+    return 0;
+}
+```
