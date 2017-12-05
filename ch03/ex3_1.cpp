@@ -2,10 +2,6 @@
 using std::cin;
 using std::cout;
 using std::endl;
-int main()
-{
-	return 0;
-}
 
 void ex1_9()
 {
@@ -48,3 +44,11 @@ void ex1_11()
 		val1--;
 	}
 } 
+
+int main()
+{
+	ex1_9();
+	ex1_10();
+	ex1_11();
+	return 0;
+}
