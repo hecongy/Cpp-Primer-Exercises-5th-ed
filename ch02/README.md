@@ -532,3 +532,44 @@ int main()
         ex2_39.cpp(2): error C2628: 'Foo' followed by 'int' is illegal (did you forget a ';'?)
         ex2_39.cpp(3): error C3874: return type of 'main' should be 'int' instead of 'Foo'
         ex2_39.cpp(4): error C2440: 'return': cannot convert from 'int' to 'Foo'
+        
+        
+[练习2.40](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_40.cpp)
+
+>根据自己的理解写出Sales_data类，最好与本书中的例子有所区别。
+
+```
+#include<iostream>
+#include<string>
+struct Sales_data{
+	private:
+		std::string bookNo;
+		unsigned units_sold = 0;
+		double price = 0.0;
+		double revenue = 0.0;
+	
+	public:
+	
+		Sales_data(std::istream &in)
+		{
+			in>>bookNo>>units_sold>>price;
+			revenue=units_sold*price;
+		}
+		
+		void add(Sales_data data)
+		{
+			units_sold += data.units_sold;
+			revenue += data.revenue;
+		}
+		
+		void print(std::ostream &out)
+		{
+			out<<"Revenue of "<<bookNo<<" is "<<revenue<<std::endl;
+		}
+};
+
+int main()
+{
+	return 0;
+}
+```
