@@ -541,29 +541,37 @@ int main()
 ```
 #include<iostream>
 #include<string>
-struct Sales_data{
+struct Sales_data {
+
     private:
-        std::string bookNo;
+	std::string bookNo;
 	unsigned units_sold = 0;
 	double price = 0.0;
 	double revenue = 0.0;
 	
     public:
-    	Sales_data(std::istream &in)
+	bool input(std::istream &in)
 	{
-	    in>>bookNo>>units_sold>>price;
-	    revenue=units_sold*price;
+		in >> bookNo >>units_sold >>price;
+		if(!in) return false;
+		revenue = units_sold * price;
+		return true;
 	}
-		
+
 	void add(Sales_data data)
 	{
-	    units_sold += data.units_sold;
-	    revenue += data.revenue;
+		units_sold += data.units_sold;
+		revenue += data.revenue;
 	}
-		
+
+	void output(std::ostream &out)
+	{
+		out << bookNo << " " << units_sold << " " << revenue << " " << price << std::endl;
+	}
+
 	void print(std::ostream &out)
 	{
-	    out<<"Revenue of "<<bookNo<<" is "<<revenue<<std::endl;
+		out << "Revenue of " << bookNo << " is " << revenue << std::endl;
 	}
 };
 
@@ -572,3 +580,8 @@ int main()
     return 0;
 }
 ```
+
+[练习2.41](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_41.cpp)
+
+>使用你自己的Sales_data类重写[1.5.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第20页）、[1.5.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第21页）和[1.6节]((https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md))（第22页）的练习。眼下先把Sales_data类的定义和main函数放在同一个文件里。
+
