@@ -542,34 +542,33 @@ int main()
 #include<iostream>
 #include<string>
 struct Sales_data{
-	private:
-		std::string bookNo;
-		unsigned units_sold = 0;
-		double price = 0.0;
-		double revenue = 0.0;
+    private:
+        std::string bookNo;
+	unsigned units_sold = 0;
+	double price = 0.0;
+	double revenue = 0.0;
 	
-	public:
-	
-		Sales_data(std::istream &in)
-		{
-			in>>bookNo>>units_sold>>price;
-			revenue=units_sold*price;
-		}
+    public:
+    	Sales_data(std::istream &in)
+	{
+	    in>>bookNo>>units_sold>>price;
+	    revenue=units_sold*price;
+	}
 		
-		void add(Sales_data data)
-		{
-			units_sold += data.units_sold;
-			revenue += data.revenue;
-		}
+	void add(Sales_data data)
+	{
+	    units_sold += data.units_sold;
+	    revenue += data.revenue;
+	}
 		
-		void print(std::ostream &out)
-		{
-			out<<"Revenue of "<<bookNo<<" is "<<revenue<<std::endl;
-		}
+	void print(std::ostream &out)
+	{
+	    out<<"Revenue of "<<bookNo<<" is "<<revenue<<std::endl;
+	}
 };
 
 int main()
 {
-	return 0;
+    return 0;
 }
 ```
