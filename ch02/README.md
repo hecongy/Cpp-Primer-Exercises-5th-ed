@@ -456,16 +456,16 @@ g = 42;
 
     略
     
-[练习2.35](#)
+[练习2.35](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_35.cpp)
 
 >判断下列定义推断出的类型是什么，然后编写程序进行验证。
 
 ```
 const int i = 42;
 auto j = i; //int, auto忽略顶层const
-const auto &k = i; //const int&
-auto *p = &i; //const int*
-const auto j2 = i, &k2 = i; //j2: const int, k2: const int&
+const auto &k = i; //int
+auto *p = &i; //const int
+const auto j2 = i, &k2 = i; //int
 ```
 
-    见注释
+    见注释
