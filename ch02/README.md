@@ -538,6 +538,7 @@ int main()
 
 >根据自己的理解写出Sales_data类，最好与本书中的例子有所区别。
 
+    由于本章还未涉及运算符重载，使用input函数代替>>，使用output函数代替<<，定义add函数将两个记录相加，定义print函数打印相同的记录
 ```
 #include<iostream>
 #include<string>
@@ -573,6 +574,11 @@ struct Sales_data {
 	{
 	    out << "Revenue of " << bookNo << " is " << revenue << std::endl;
 	}
+	
+	std::string isbn()
+	{
+	    return bookNo;
+	}
 };
 
 int main()
@@ -583,7 +589,7 @@ int main()
 
 [练习2.41](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_41.cpp)
 
->使用你自己的Sales_data类重写[1.5.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第20页）、[1.5.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第21页）和[1.6节]((https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md))（第22页）的练习。眼下先把Sales_data类的定义和main函数放在同一个文件里。
+>使用你自己的Sales_data类重写[1.5.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第20页）、[1.5.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第21页）和[1.6节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第22页）的练习。眼下先把Sales_data类的定义和main函数放在同一个文件里。
 
 ```
 #include<iostream>
@@ -622,11 +628,17 @@ struct Sales_data {
 	{
 	    out << "Revenue of " << bookNo << " is " << revenue << std::endl;
 	}
+	
+	std::string isbn()
+	{
+	    return bookNo;
+	}
 };
 
 int main()
 {
-    std::vector<Sales_data> items;
+    //ex1_20
+    std::vector<Sales_data> items;
     Sales_data item;
     while (item.input(std::ref(std::cin)))
     {
@@ -636,6 +648,64 @@ int main()
     {
 	items[i].output(std::ref(std::cout));
     }
+    
+    //ex1_21
+    Sales_data item1, item2;
+    item1.input(std::ref(std::cin));
+    item2.input(std::ref(std::cin));
+    if(item1.isbn()!=item2.isbn())
+    {
+	std::cout<<"Wrong input!"<<std::endl;
+    }
+    else
+    {
+	item1.add(item2);
+	item1.output();
+    }
+
+    //ex1_22
+    item1.input(std::ref(std::cin));
+    while(item2.input(std::ref(std::cin)))
+    {
+	if(item1.isbn()!=item2.isbn())
+	{
+	    std::cout<<"Wrong input!"<<std::endl;
+	    break;
+	}
+	else
+	{
+	    item1.add(item2);
+	}
+    }
+    item1.output();
+	
+    //ex1_23
+    std::vector<std::string> isbns;
+    std::vector<int> nums;
+    while(item.input(std::ref(std::cin)))
+    {
+	bool exist = false;
+	for(std::vector<std::string>::size_type i = 0;i<isbns.size();i++)
+	{
+	    if(isbns[i]==item.isbn())
+	    {
+		nums[i]++;
+		exist=true;
+		break;
+	    }
+	}
+	if(!exist)
+	{
+	    isbns.push_back(item.isbn());
+	    nums.push_back(1);
+	}
+    }
+    std::cout<<"All ISBNS with their transactions counts are:"<<std::endl;
+    for(std::vector<std::string>::size_type i = 0;i<isbns.size();i++)
+    {
+	std::cout<<"ISBN: "<<isbns[i]<<", counts: "<<nums[i]<<std::endl;
+    }
+    
     return 0;
 }
 ```
