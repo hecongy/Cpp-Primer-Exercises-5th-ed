@@ -75,7 +75,7 @@ int main()
 	}
 	
 	//ex1_25
-	Sales_data total; //保存下一条交易记录的变量
+	Sales_data total; //保存下一条交易记录的变 量
 	//读入第一条交易记录，并确保有数据可以处理
 	if(total.input(std::ref(std::cin))){
 		Sales_data trans; //保存和的变量
