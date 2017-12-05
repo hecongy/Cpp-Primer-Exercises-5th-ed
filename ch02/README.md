@@ -595,7 +595,7 @@ int main()
 #include<iostream>
 #include<vector>
 #include<string>
-#include <functional>
+#include<functional>
 struct Sales_data {
 
     private:
@@ -660,7 +660,7 @@ int main()
     else
     {
 	item1.add(item2);
-	item1.output();
+	item1.output(std::ref(std::cout));
     }
 
     //ex1_22
@@ -677,9 +677,9 @@ int main()
 	    item1.add(item2);
 	}
     }
-    item1.output();
+    item1.output(std::ref(std::cout));
 	
-    //ex1_23
+    //ex1_23 & ex1_24
     std::vector<std::string> isbns;
     std::vector<int> nums;
     while(item.input(std::ref(std::cin)))
@@ -706,6 +706,29 @@ int main()
 	std::cout<<"ISBN: "<<isbns[i]<<", counts: "<<nums[i]<<std::endl;
     }
     
+    //ex1_25
+    Sales_data total; //保存下一条交易记录的变量
+    //读入第一条交易记录，并确保有数据可以处理
+    if(total.input(std::ref(std::cin))){
+	Sales_data trans; //保存和的变量
+	//读入并处理剩余交易记录
+	while(trans.input(std::ref(std::cin))){
+	    //如果我们仍在处理相同的书
+	    if(total.isbn() == trans.isbn())
+	        total.add(trans); //更新总销售额
+	    else{
+		//打印前一本书的结果
+		total.output(std::ref(std::cout));
+		total = trans; //total现在表示下一本书的销售额
+	        }
+	}
+	total.output(std::ref(std::cout)); //打印最后一本书的结果
+    }else{
+	//没有输入！警告读者
+	std::cerr << "No data?!" << std::endl;
+	return -1; //表示失败
+    }
+    
     return 0;
 }
 ```
@@ -713,3 +736,5 @@ int main()
 [练习2.42](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_42.cpp)
 
 >根据你自己的理解重写一个[Sales_data.h](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/Sales_data.h)头文件，并以此为基础重做[2.6.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_41.cpp)（第67页）的练习。
+
+    见链接
