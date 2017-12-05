@@ -8,7 +8,7 @@ using std::endl;
 //输出较大的字符串
 void biggerone()
 {
-	cout<<"Please input two strings: "<<endl;
+    cout<<"Please input two strings: "<<endl;
     string s1, s2;
     getline(cin,s1);
     getline(cin,s2);
@@ -29,7 +29,7 @@ void biggerone()
 //输出较长的字符串
 void longerone()
 {
-	cout<<"Please input two strings: "<<endl;
+    cout<<"Please input two strings: "<<endl;
     string s1, s2;
     getline(cin,s1);
     getline(cin,s2);
@@ -49,6 +49,6 @@ void longerone()
 int main()
 {
     biggerone();
-	longerone();
+    longerone();
     return 0;
 }
