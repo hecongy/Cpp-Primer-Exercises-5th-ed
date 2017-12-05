@@ -516,4 +516,19 @@ decltype(a = b) d = a;
         auto b = a; 
         decltype((a)) c = a;
 
-[练习2.36](#)
+[练习2.39](#)
+
+>编译下面的程序观察其运行结果，注意，如果忘记写类定义体后面的分号会发生什么情况？记录下相关信息，以后可能会有用。
+
+```
+struct Foo { /* 此处为空 */ } //注意，没有分号
+int main()
+{
+    return 0;
+}
+```
+
+    报错：
+        ex2_39.cpp(2): error C2628: 'Foo' followed by 'int' is illegal (did you forget a ';'?)
+        ex2_39.cpp(3): error C3874: return type of 'main' should be 'int' instead of 'Foo'
+        ex2_39.cpp(4): error C2440: 'return': cannot convert from 'int' to 'Foo'
