@@ -846,3 +846,42 @@ int main()
 
     1.迭代器没有+运算
     2.相加可能导致溢出
+
+[练习3.27](#)
+
+>假设txt_size是一个无参数的函数，它的返回值是int。请回答下列哪个定义是非法的？为什么？  
+unsigned buf_size = 1024;  
+(a) int ia\[buf_size];  
+(b) int ia\[4 * 7 -14];  
+(c) int ia\[txt_size()];  
+(d) char st\[11] = "fundamental";
+
+    (a)非法，buf_size不是常量表达式
+    (b)合法
+    (c)如果txt_size()是constexpr则合法，否则非法
+    (d)非法，"fundamental"有12个元素（包括表示字符串结束的空字符）
+    
+[练习3.28](#)
+
+>下列数组中元素的值是什么？
+
+```
+string sa[10];
+int ia[10];
+int main(){
+    string sa2[10];
+    int ia2[10];
+}
+```
+
+    sa: 10个空字符串
+    ia: 10个0
+    sa2: 10个空字符串
+    ia2: 10个未定义的值
+    
+[练习3.29](#)
+
+>相比于vector来说，数组有哪些缺点，请列举一些。
+
+    大小不可变
+    不支持拷贝和赋值
