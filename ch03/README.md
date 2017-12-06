@@ -344,3 +344,33 @@ for (auto &c : s) { /*...*/ }
 ```
 
     合法，c的类型是const char&
+
+[练习3.12](#)
+
+>下列vector对象的定义有不正确的吗？如果有，请指出来。对于正确的，描述其执行结果；对于不正确的，说明其错误的原因。  
+(a) vector<vector<int>> ivec;  
+(b) vector<string> svec = ivec;  
+(c) vector<string> svec(10, "null");
+	
+    (a)正确，ivec不含任何元素
+    (b)不正确，svec的元素是string对象，不是vector<int>
+    (c)正确，svec有10个相同的元素"null"
+    
+[练习3.13](#)
+
+>下列的vector对象各包含多少个元素？这些元素的值分别为多少？  
+(a) vector<int> v1;  
+(b) vector<int> v2(10);  
+(c) vector<int> v3(10,42);  
+(d) vector<int> v4{10};  
+(e) vector<int> v5{10,42};  
+(f) vector<string> v6{10};  
+(g) vector<string> v7{10, "hi"};
+	
+    (a) 0个元素
+    (b) 10个元素，都是0
+    (c) 10个元素，都是42
+    (d) 1个元素，42
+    (e) 2个元素，10、42
+    (f) 10个元素，都是空字符串
+    (g) 10个元素，都是"hi"
