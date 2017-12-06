@@ -582,6 +582,7 @@ for(int i=0; i<10; i++)
 
 >读入一组整数并把它们存入一个vector对象，将每对相邻整数的和输出出来。改写你的程序，这次要求先输出第1个和最后1个元素的和，接着输出第2个和倒数第2个元素的和，以此类推。
 
+    设置两个下标标志：b和e分别代表vector的首尾指针
 ```
 #include<iostream>
 #include<vector>
@@ -723,3 +724,125 @@ int main()
     return 0;
 }
 ```
+
+[练习3.24](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_24.cpp)
+
+>请使用迭代器重做3.3.3节（第94页）的[最后一个练习](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_20.cpp)。
+
+    下标标志替换为迭代器（注意，end()是尾后迭代器）
+```
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    int i;
+    vector<int> ivec;
+    cout<<"Please input integer sequence:"<<endl;
+    while(cin>>i)
+    {
+	ivec.push_back(i);
+    }
+	
+    auto b = ivec.begin();
+    auto e = ivec.end()-1;
+	
+    cout<<"Sum of adjacent members are:"<<endl;
+
+    while(b+1<=e)
+    {
+	cout<<*b + *(b+1)<<endl;
+	b=b+2;
+    }
+    if(b==e)
+	cout<<*e<<endl;
+	
+    b=ivec.begin();
+    cout<<"Sum of symmetrical members are:"<<endl;
+    while(b<e)
+    {
+	cout<<*b + *e<<endl;
+	b++;
+	e--;
+    }
+    if(b==e)
+	cout<<*e<<endl;
+	
+    return 0;
+}
+```
+
+[练习3.25](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_25.cpp)
+
+>3.3.3节（第93页）划分分数段的程序是使用下标运算符实现的，请利用迭代器修改该程序并实现相同的功能。
+
+```
+#include<iostream>
+#include<vector>
+using namespace std;
+
+//原程序
+void index()
+{
+    //以10分为一个分数段统计成绩的数量：0~9, 10~19, ..., 90~99, 100
+    vector<unsigned> scores(11,0); //11个分数段，全部初始化为0
+    unsigned grade;
+    while(cin >> grade){           //读取成绩
+	if(grade <= 100)           //只处理有效的成绩
+	    ++scores[grade/10];    //将对应分数段的计数值加1 
+    }
+	
+    cout<<"Statistics are:"<<endl;
+    for(int i = 0; i < 11; i ++)
+    {
+	if(i!=10)
+	{
+	    cout<< i*10 <<"~"<<i*10+9<<": "<<scores[i]<<endl;
+	}
+	else
+	{
+	    cout<< "100: "<<scores[i]<<endl;
+	}
+    }
+}
+
+//迭代器版本
+void iteration()
+{
+    //以10分为一个分数段统计成绩的数量：0~9, 10~19, ..., 90~99, 100
+    vector<unsigned> scores(11,0); //11个分数段，全部初始化为0
+    unsigned grade;
+    while(cin >> grade){                       //读取成绩
+	if(grade <= 100)                       //只处理有效的成绩
+            ++(*(scores.begin()+grade/10));    //将对应分数段的计数值加1 
+    }
+	
+    cout<<"Statistics are:"<<endl;
+    for(auto b = scores.cbegin(); b!=scores.cend(); b++)
+    {
+	if(b!=scores.cend()-1)
+	{
+	    cout<< (b-scores.cbegin())*10 <<"~"<<(b-scores.cbegin())*10+9<<": "<<*b<<endl;
+	}
+	else
+	{
+	    cout<< "100: "<<*b<<endl;
+	}
+    }
+}
+
+int main()
+{
+    iteration();
+    return 0;
+}
+```
+
+[练习3.26](#)
+
+>在100页的二分搜索程序中，为什么用的是 mid = beg + (end - beg) /2，而非 mid = (beg + end) /2;?
+
+    1.迭代器没有+运算
+    2.相加可能导致溢出
