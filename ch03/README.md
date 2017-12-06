@@ -433,3 +433,194 @@ int main()
 [练习3.16](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_16.cpp)
 
 >编写一段程序，把[练习3.13](#)中vector对象的容量和具体内容输出出来。检验你之前的回答是否正确，如果不对，回过头重新学习3.3.1节（第87页）直到弄明白错在何处为止。
+
+```
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    vector<int> v1;
+    vector<int> v2(10);
+    vector<int> v3(10,42);
+    vector<int> v4{10};
+    vector<int> v5{10,42};
+    vector<string> v6{10};
+    vector<string> v7{10,"hi"};
+	
+    cout<<"v1 contains "<<v1.size()<<" elements. They are:"<<endl;
+    for(auto e:v1)
+    {
+	cout<<e<<endl;
+    }
+	
+    cout<<"v2 contains "<<v2.size()<<" elements. They are:"<<endl;
+    for(auto e:v2)
+    {
+	cout<<e<<endl;
+    }
+	
+    cout<<"v3 contains "<<v3.size()<<" elements. They are:"<<endl;
+    for(auto e:v3)
+    {
+	cout<<e<<endl;
+    }
+	
+    cout<<"v4 contains "<<v4.size()<<" elements. They are:"<<endl;
+    for(auto e:v4)
+    {
+	cout<<e<<endl;
+    }
+	
+    cout<<"v5 contains "<<v5.size()<<" elements. They are:"<<endl;
+    for(auto e:v5)
+    {
+	cout<<e<<endl;
+    }
+	
+    cout<<"v6 contains "<<v6.size()<<" elements. They are:"<<endl;
+    for(auto e:v6)
+    {
+	cout<<e<<endl;
+    }
+	
+    cout<<"v7 contains "<<v7.size()<<" elements. They are:"<<endl;
+    for(auto e:v7)
+    {
+	cout<<e<<endl;
+    }
+	
+    return 0;
+}
+```
+
+[练习3.17](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_17.cpp)
+
+>从cin读入一组词并把它们存入一个vector对象，然后设法把所有词都改写为大写形式。输出改变后的结果，每个词占一行。
+
+    首先遍历所有单词，对于每个单词，遍历所有字符
+
+```
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    string word;
+    vector<string> words;
+    cout<<"Please input word sequence:"<<endl;
+    while(cin>>word)
+    {
+	words.push_back(word);
+    }
+	
+    for(auto &e:words)
+    {
+	for(auto &c:e)
+	{
+	    c = toupper(c);
+	}		
+    }
+	
+    cout<<"The result is:"<<endl;
+	
+    for(auto e:words)
+    {
+	cout<<e<<endl;
+    }
+	
+    return 0;
+}
+```
+
+[练习3.18](#)
+
+>下面的程序合法吗？如果不合法，你准备怎么修改？
+
+```
+vector<int> ivec;
+ivec[0] = 42;
+```
+
+    不合法，ivec中没有元素，所以不能使用下标运算符访问其第一个元素，修改：
+
+```
+vector<int> ivec(1);
+ivec[0] = 42;
+```
+
+[练习3.19](#)
+
+>如果想定义一个含有10个元素的vector对象，所有元素的值都是42，请列举出三种不同的实现方法。哪种方法更好呢？为什么？
+
+```
+//1.
+vector<int> ivec(10,42);
+
+//2.
+vector<int> ivec(10);
+for(int i=0; i<10; i++)
+{
+    ivec[i] = 42;
+}
+
+//3.
+vector<int> ivec;
+for(int i=0; i<10; i++)
+{
+    ivec.push_back(42);
+}
+```
+
+    三种方法都能满足要求，第一种更好，直接初始化，不需要额外的下标访问或者push_back操作
+    
+[练习3.20](#)
+
+>读入一组整数并把它们存入一个vector对象，将每对相邻整数的和输出出来。改写你的程序，这次要求先输出第1个和最后1个元素的和，接着输出第2个和倒数第2个元素的和，以此类推。
+
+```
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    int i;
+    vector<int> ivec;
+    cout<<"Please input integer sequence:"<<endl;
+    while(cin>>i)
+    {
+	ivec.push_back(i);
+    }
+	
+    decltype(ivec.size()) b = 0;
+    auto e = ivec.size()-1;
+	
+    cout<<"Sum of adjacent members are:"<<endl;
+    while(b+1<=e)
+    {
+	cout<<ivec[b]+ivec[b+1]<<endl;
+	b=b+2;
+    }
+    if(b==e)
+        cout<<ivec[e]<<endl;
+	
+    b=0;
+    cout<<"Sum of symmetrical members are:"<<endl;
+    while(b<e)
+    {
+	cout<<ivec[b]+ivec[e]<<endl;
+	b++;
+	e--;
+    }
+    if(b==e)
+	cout<<ivec[e]<<endl;
+	
+    return 0;
+}
+```
