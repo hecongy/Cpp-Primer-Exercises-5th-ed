@@ -429,3 +429,7 @@ int main()
     return 0;
 }
 ```
+
+[练习3.16](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_16.cpp)
+
+>编写一段程序，把[练习3.13](#)中vector对象的容量和具体内容输出出来。检验你之前的回答是否正确，如果不对，回过头重新学习3.3.1节（第87页）直到弄明白错在何处为止。
