@@ -885,3 +885,73 @@ int main(){
 
     大小不可变
     不支持拷贝和赋值
+
+[练习3.30](#)
+
+>指出下面代码中的索引错误。
+
+```
+constexpr size_t array_size = 10;
+int ia[array_size];
+for (size_t ix = 1; ix <= array_size; ++ix)
+    ia[ix] = ix;
+```
+
+    数组的索引从0开始，不是从1开始
+    
+[练习3.31](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_31.cpp)
+
+>编写一个程序，定义一个含有10个int的数组，令每个元素的值就是其下标值。
+
+```
+int main()
+{
+    int arr[10];
+    for(int i=0; i<10; i++)
+    {
+	arr[i]=i;
+    }
+    return 0;
+}
+```
+
+[练习3.32](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_32.cpp)
+
+>将上一题刚刚创建的数组拷贝给另一个数组。利用vector重写程序，实现类似的功能。
+
+```
+#include<vector>
+using namespace std;
+int main()
+{
+    int arr[10];
+    for(int i=0; i<10; i++)
+    {
+	arr[i]=i;
+    }
+	
+    //数组拷贝
+    int arr2[10];
+    for(int i=0; i<10; i++)
+    {
+	arr2[i]=arr[i];
+    }
+	
+	
+    vector<int> ivec(10);
+    for(int i=0; i<10; i++)
+    {
+	ivec[i] = i;
+    }
+    //vector拷贝
+    vector<int> ivec2 = ivec;
+    
+    return 0;
+}
+```
+
+[练习3.33](#)
+
+>对于104页的程序来说，如果不初始化scores将会发生什么？
+
+    如果不初始化scores，scores中元素的值是未定义的，++scores\[grade/10]会得到意想不到的结果
