@@ -203,3 +203,144 @@ int main()
     return 0;
 }
 ```
+
+[练习3.6](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_6.cpp)
+
+>编写一段程序，使用范围for语句将字符串内的所有字符用X代替。
+
+```
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    cout<<"Please input a string:"<<endl;
+    string s;
+    getline(cin,s);
+    for(auto &c:s)
+    {
+	c='X';
+    }
+    cout<<"The result is: "<<s<<endl;
+    return 0;
+}
+```
+
+
+[练习3.7](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_7.cpp)
+
+>就上一题完成的程序而言，如果将循环控制变量的类型设为char将发生什么？先估计一下结果，然后实际编程进行验证。
+
+    字符串不会改变，因为范围for的循环控制变量是拷贝赋值的，所以不会改变字符串：
+
+```
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    cout<<"Please input a string:"<<endl;
+    string s;
+    getline(cin,s);
+    for(char c:s) //拷贝赋值  
+    {
+	c='X';
+    }
+    cout<<"The result is: "<<s<<endl;
+    return 0;
+}
+```
+
+[练习3.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_8.cpp)
+
+>分别用while循环和传统的for循环重写第一题的程序，你觉得哪种形式更好呢？为什么？
+
+    范围for更简洁，不需要去控制下标：
+
+```
+#include<iostream>
+#include<string>
+using namespace std;
+
+//while循环
+void whileloop()
+{
+    cout<<"Please input a string:"<<endl;
+    string s;
+    getline(cin,s);
+	
+    decltype(s.size()) i = 0;
+    while(i<s.size())
+    {
+	s[i] = 'X';
+	i++;
+    }
+    cout<<"The result is: "<<s<<endl;
+}
+
+//传统for循环
+void traditionalforloop()
+{
+    cout<<"Please input a string:"<<endl;
+    string s;
+    getline(cin,s);
+	
+    for(decltype(s.size()) i=0;i<s.size();i++)
+    {
+	s[i] = 'X';
+    }
+    cout<<"The result is: "<<s<<endl;
+}
+int main()
+{
+    whileloop();
+    traditionalforloop();
+    return 0;
+}
+```
+
+[练习3.9](#)
+
+>下面的程序有何作用？它合法吗？如果不合法，为什么？
+
+```
+string s;
+cout << s[0] <<endl;
+```
+
+    不合法，s默认初始化是空字符串，长度为0，不能访问第一个字符s[0]
+    
+[练习3.10](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_10.cpp)
+
+>编写一段程序，读入一个包含标点符号的字符串，将标点符号去除后输出字符串剩余的部分。
+
+```
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    cout<<"Please input a string:"<<endl;
+    string s;
+    string result;
+    getline(cin,s);
+    for(char c:s)
+    {
+	if(!ispunct(c))
+	    result+=c;
+    }
+    cout<<"The result is: "<<result<<endl;
+    return 0;
+}
+```
+
+[练习3.11](#)
+
+>下面的范围for语句合法吗？如果合法，c的类型是什么？
+
+```
+const string s = "Keep out!";
+for (auto &c : s) { /*...*/ }
+```
+
+    合法，c的类型是const char&
