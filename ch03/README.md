@@ -578,7 +578,7 @@ for(int i=0; i<10; i++)
 
     三种方法都能满足要求，第一种更好，直接初始化，不需要额外的下标访问或者push_back操作
     
-[练习3.20](#)
+[练习3.20](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_20.cpp)
 
 >读入一组整数并把它们存入一个vector对象，将每对相邻整数的和输出出来。改写你的程序，这次要求先输出第1个和最后1个元素的和，接着输出第2个和倒数第2个元素的和，以此类推。
 
@@ -621,6 +621,105 @@ int main()
     if(b==e)
 	cout<<ivec[e]<<endl;
 	
+    return 0;
+}
+```
+
+[练习3.21](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_21.cpp)
+
+>请使用迭代器重做3.3.3节（第94页）的[第一个练习](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_16.cpp)。
+
+```
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    vector<int> v1;
+    vector<int> v2(10);
+    vector<int> v3(10,42);
+    vector<int> v4{10};
+    vector<int> v5{10,42};
+    vector<string> v6{10};
+    vector<string> v7{10,"hi"};
+	
+    cout<<"v1 contains "<<v1.size()<<" elements. They are:"<<endl;
+    for(auto it=v1.begin();it<v1.end();it++)
+	cout<<*it<<endl;
+	
+    cout<<"v2 contains "<<v2.size()<<" elements. They are:"<<endl;
+    for(auto it=v2.begin();it<v2.end();it++)
+	cout<<*it<<endl;
+	
+    cout<<"v3 contains "<<v3.size()<<" elements. They are:"<<endl;
+    for(auto it=v3.begin();it<v3.end();it++)
+	cout<<*it<<endl;
+	
+    cout<<"v4 contains "<<v4.size()<<" elements. They are:"<<endl;
+    for(auto it=v4.begin();it<v4.end();it++)
+	cout<<*it<<endl;
+	
+    cout<<"v5 contains "<<v5.size()<<" elements. They are:"<<endl;
+    for(auto it=v5.begin();it<v5.end();it++)
+	cout<<*it<<endl;
+	
+    cout<<"v6 contains "<<v6.size()<<" elements. They are:"<<endl;
+    for(auto it=v6.begin();it<v6.end();it++)
+	cout<<*it<<endl;
+	
+    cout<<"v7 contains "<<v7.size()<<" elements. They are:"<<endl;
+    for(auto it=v7.begin();it<v7.end();it++)
+	cout<<*it<<endl;
+	
+    return 0;
+}
+```
+
+[练习3.22](#)
+
+>修改之前那个输出text第一段的程序，首先把text的第一段全都改成大写形式，然后再输出它。
+
+    遍历每一行的所有字符并转换
+```
+for(auto it = text.begin(); it != text.end() && !it->empty(); ++it)
+{
+    for(auto &c: *it)
+    	c = toupper(c);
+    cout << *it <<endl;
+}
+```
+
+[练习3.23](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_23.cpp)
+
+>编写一段程序，创建一个含有10个整数的vector对象，然后使用迭代器将所有元素的值都变成原来的两倍。输出vector对象的内容，检验程序是否正确。
+
+```
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{
+    vector<int> ivec(10);
+    for(int i=0; i<10; i++)
+    {
+	ivec[i] = i;
+    }
+	
+    cout<<"The origin vector is:"<<endl;
+    for(auto it = ivec.begin(); it!=ivec.end(); it++)
+    {
+	cout<<*it<<endl;
+	*it *= *it;
+    }
+	
+    cout<<"The changed vector is:"<<endl;
+    for(auto it = ivec.begin(); it!=ivec.end(); it++)
+    {
+	cout<<*it<<endl;
+    }
     return 0;
 }
 ```
