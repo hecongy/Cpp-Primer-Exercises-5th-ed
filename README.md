@@ -30,4 +30,4 @@
 + [第19章 特殊工具与技术](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/tree/master/ch19)
 
 #### Plus 翻译有误之处
-+ [翻译有误列表](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/tree/master/incorrect translation)
++ [翻译有误列表](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/tree/master/incorrect-translation)
