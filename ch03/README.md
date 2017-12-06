@@ -374,3 +374,58 @@ for (auto &c : s) { /*...*/ }
     (e) 2个元素，10、42
     (f) 10个元素，都是空字符串
     (g) 10个元素，都是"hi"
+
+[练习3.14](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_14.cpp)
+
+>编写一段程序，用cin读入一组整数并把它们存入一个vector对象。
+
+```
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{
+    cout<<"Please input integers:"<<endl;
+    vector<int> ivec;
+    int i;
+    while(cin>>i)
+    {
+	ivec.push_back(i);
+    }
+    cout<<"All integers you input are:"<<endl;
+    for(auto m:ivec)
+    {
+	cout<<m<<endl;
+    }
+    return 0;
+}
+```
+
+[练习3.15](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_15.cpp)
+
+>改写上题程序，不过这次读入的是字符串。
+
+```
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    cout<<"Please input strings:"<<endl;
+    vector<string> svec;
+    string s;
+    while(getline(cin,s))
+    {
+	svec.push_back(s);
+    }
+    cout<<"All strings you input are:"<<endl;
+    for(auto m:svec)
+    {
+	cout<<m<<endl;
+    }
+    return 0;
+}
+```
