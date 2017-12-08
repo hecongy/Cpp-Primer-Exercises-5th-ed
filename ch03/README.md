@@ -966,6 +966,65 @@ p1 += p2 - p1;
 
     此句的结果类似p1 = p1，只要p2和p1都合法，此句就合法
 
-[练习3.35](#)
+[练习3.35](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_35.cpp)
 
 >编写一段程序，利用指针将数组中的元素置为0。
+
+```cpp
+int main()
+{
+    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    int* p = arr;
+    for(int i = 0; i<10; i++)
+    {
+	*(p+i) = 0;
+    }
+    return 0;
+}
+```
+
+[练习3.36](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_36.cpp)
+
+>编写一段程序，比较两个数组是否相等。再写一段程序，比较两个vector对象是否相等。
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    int arr1[10] = {1,2,3,4,5,6,7,8,9,10};
+    int arr2[10] = {1,2,3,4,5,6,7,8,9,11};
+    vector<int> vec1 = {1,2,3,4,5,6,7,8,9,10};
+    vector<int> vec2 = {1,2,3,4,5,6,7,8,9,11};
+	
+    //比较数组
+    bool flag = true;
+    for(int i = 0; i<10; i++)
+    {
+	if(arr1[i]!=arr2[2])
+	{
+	    flag = false;			
+	}
+    }
+    if(flag)
+    {
+	cout<<"The two arrays are same."<<endl;
+    }
+    else
+    {
+	cout<<"The two arrays are different."<<endl;
+    }
+	
+    //比较vector
+    if(vec1!=vec2)
+    {
+	cout<<"The two vectors are different."<<endl;
+    }
+    else
+    {
+	cout<<"The two vectors are same."<<endl;
+    }
+    return 0;
+}
+```
