@@ -15,7 +15,7 @@
 [练习2.3](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/ex2_4.cpp)
 
 >读程序写结果。  
-```
+```cpp
 unsigned u = 10, u2 = 42;  
 std::cout << u2 - u << std::endl;  
 std::cout << u - u2 << std::endl;  
@@ -34,7 +34,7 @@ std::cout << u - i << std::endl;
 
 >编写程序检查你的估计是否正确，如果不正确，请仔细研读本节直到弄明白问题所在。
 
-```
+```cpp
 #include<iostream>
 int main()
 {
@@ -89,7 +89,7 @@ int month = 09, day = 07;
 
 >请利用转义序列编写一段程序，要求先输出2M，然后转到新一行。修改程序使其先输出2，然后输出制表符，再输出M，最后转到新一行。
 
-```
+```cpp
 #include<iostream>
 int main()
 {
@@ -118,7 +118,7 @@ int main()
 [练习2.10](#)
 
 >下列变量的初始值分别是什么？  
-```
+```cpp
 std::string global_str;  
 int global_int;  
 int main()  
@@ -159,7 +159,7 @@ int main()
 
 >下面程序中j的值是多少？  
 
-```
+```cpp
 int i = 42;
 int main()
 {
@@ -174,7 +174,7 @@ int main()
 
 >下面的程序合法吗？如果合法，它将输出什么？
 
-```
+```cpp
 int i = 100, sum = 0;
 for (int i = 0; i != 10; i++)
     sum += i;
@@ -219,7 +219,7 @@ double d = 0, &r2 = d;
 
 >执行下面的代码将输出什么结果？
 
-```
+```cpp
 int i, &ri = i;
 i = 5; ri = 10;
 std::cout << i << " " << ri << std::endl;
@@ -232,7 +232,7 @@ std::cout << i << " " << ri << std::endl;
 
 >编写代码分别更改指针的值以及指针所指对象的值。
 
-```
+```cpp
 #include<iostream>
 int main()
 {
@@ -260,7 +260,7 @@ int main()
 
 >请叙述下面这段代码的作用。
 
-```
+```cpp
 int i = 42;
 int *p1 = &i;
 *p1 = *p1 * *p1;
@@ -284,7 +284,7 @@ int i = 0;
 
 >假设p是一个int型指针，请说明下述代码的含义。
 
-```
+```cpp
 if (p) //...
 if (*p) //...
 ```
@@ -304,7 +304,7 @@ if (*p) //...
 
 >在下面这段代码中为什么p合法而lp非法？
 
-```
+```cpp
 int i = 42;
 void *p = &i;
 long *lp = &i;
@@ -394,7 +394,7 @@ long *lp = &i;
 
 >对于下面的这些语句，请说明对象被声明成了顶层const还是底层const？
 
-```
+```cpp
 const int v2 = 0;
 int v1 = v2;
 int *p1 = &v1, &r1 = v1;
@@ -408,7 +408,7 @@ const int *p2 = &v2, *const p3 = &i, &r2 = v2;
 
 >假设已有上一个练习中所做的那些声明，则下面的哪些语句是合法的？请说明顶层const和底层const再每个例子中有何体现。
 
-```
+```cpp
 r1 = v2; //合法，拷贝赋值
 p1 = p2; //不合法，const int*不能转换成int*
 p2 = p1; //合法，int*可以转换成const int*
@@ -423,12 +423,12 @@ p2 = p3; //合法，拷贝赋值
 
 >下面的代码是否合法？如果非法，请设法将其修改正确。
 
-```
+```cpp
 int null = 0, *p = null;
 ```
 
     非法，修改如下：
-```
+```cpp
 constexpr int null = 0, *p = null;
 ```
 
@@ -437,7 +437,7 @@ constexpr int null = 0, *p = null;
 
 >利用本节定义的变量，判断下列语句的运行结果。
 
-```
+```cpp
 a = 42;
 b = 42;
 c = 42;
@@ -460,7 +460,7 @@ g = 42;
 
 >判断下列定义推断出的类型是什么，然后编写程序进行验证。
 
-```
+```cpp
 const int i = 42;
 auto j = i; //int, auto忽略顶层const
 const auto &k = i; //int
@@ -474,7 +474,7 @@ const auto j2 = i, &k2 = i; //int
 
 >关于下面的代码，请指出每一个变量的类型以及程序结束时它们各自的值。
 
-```
+```cpp
 int a = 3, b = 4;
 decltype(a) c = a;
 decltype((b)) d = a;
@@ -491,7 +491,7 @@ decltype((b)) d = a;
 
 >赋值是会产生引用的一类典型表达式，引用的类型就是左值的类型。也就是说，如果i是int，则表达式i=x的类型是int&。根据这一特点，请指出下面的代码中每一个变量的类型和值。
 
-```
+```cpp
 int a = 3, b = 4;
 decltype(a) c = a;
 decltype(a = b) d = a;
@@ -520,7 +520,7 @@ decltype(a = b) d = a;
 
 >编译下面的程序观察其运行结果，注意，如果忘记写类定义体后面的分号会发生什么情况？记录下相关信息，以后可能会有用。
 
-```
+```cpp
 struct Foo { /* 此处为空 */ } //注意，没有分号
 int main()
 {
@@ -539,7 +539,7 @@ int main()
 >根据自己的理解写出Sales_data类，最好与本书中的例子有所区别。
 
     由于本章还未涉及运算符重载，使用input函数代替>>，使用output函数代替<<，定义add函数将两个记录相加，定义print函数打印相同的记录
-```
+```cpp
 #include<iostream>
 #include<string>
 struct Sales_data {
@@ -591,7 +591,7 @@ int main()
 
 >使用你自己的Sales_data类重写[1.5.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第20页）、[1.5.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第21页）和[1.6节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第22页）的练习。眼下先把Sales_data类的定义和main函数放在同一个文件里。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
