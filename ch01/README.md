@@ -103,7 +103,7 @@ int main()
 [练习1.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/ex1_8.cpp)
 
 >指出下列哪些输出语句是合法的（如果有的话）：   
-```cpp
+```
 std::cout << "/\*";  
 std::cout << "\*/";  
 std::cout << /\* "\*/" \*/;  
