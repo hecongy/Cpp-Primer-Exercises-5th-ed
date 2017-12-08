@@ -3,7 +3,7 @@
 >使用恰当的using声明重做[1.4.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch01/README.md)（第11页）和[2.6.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch02/README.md)（第67页）的练习。
 
     以1.4.1节练习为例：
-```
+```cpp
 #include<iostream>
 using std::cin;
 using std::cout;
@@ -64,7 +64,7 @@ int main()
 
 >编写一段程序从标准输入中一次读入一整行，然后修改该程序使其一次读入一个词。
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using std::cout;
@@ -101,7 +101,7 @@ int main()
 
 >编写一段程序读入两个字符串，比较其是否相等并输出结果。如果不想等，输出较大的那个字符串。改写上述程序，比较输入的两个字符串是否等长，如果不等长，输出长度较大的那个字符串。
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using std::string;
@@ -162,7 +162,7 @@ int main()
 
 >编写一段程序从标准输入中读入多个字符串并将它们连接在一起，输出连接成的大字符串。然后修改上述程序，用空格把输入的多个字符串分隔开来。
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using std::string;
@@ -208,7 +208,7 @@ int main()
 
 >编写一段程序，使用范围for语句将字符串内的所有字符用X代替。
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using namespace std;
@@ -233,7 +233,7 @@ int main()
 
     字符串不会改变，因为范围for的循环控制变量是拷贝赋值的，所以不会改变字符串：
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using namespace std;
@@ -257,7 +257,7 @@ int main()
 
     范围for更简洁，不需要去控制下标：
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using namespace std;
@@ -303,7 +303,7 @@ int main()
 
 >下面的程序有何作用？它合法吗？如果不合法，为什么？
 
-```
+```cpp
 string s;
 cout << s[0] <<endl;
 ```
@@ -314,7 +314,7 @@ cout << s[0] <<endl;
 
 >编写一段程序，读入一个包含标点符号的字符串，将标点符号去除后输出字符串剩余的部分。
 
-```
+```cpp
 #include<iostream>
 #include<string>
 using namespace std;
@@ -338,7 +338,7 @@ int main()
 
 >下面的范围for语句合法吗？如果合法，c的类型是什么？
 
-```
+```cpp
 const string s = "Keep out!";
 for (auto &c : s) { /*...*/ }
 ```
@@ -379,7 +379,7 @@ for (auto &c : s) { /*...*/ }
 
 >编写一段程序，用cin读入一组整数并把它们存入一个vector对象。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -406,7 +406,7 @@ int main()
 
 >改写上题程序，不过这次读入的是字符串。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -434,7 +434,7 @@ int main()
 
 >编写一段程序，把[练习3.13](#)中vector对象的容量和具体内容输出出来。检验你之前的回答是否正确，如果不对，回过头重新学习3.3.1节（第87页）直到弄明白错在何处为止。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -502,7 +502,7 @@ int main()
 
     首先遍历所有单词，对于每个单词，遍历所有字符
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -541,14 +541,14 @@ int main()
 
 >下面的程序合法吗？如果不合法，你准备怎么修改？
 
-```
+```cpp
 vector<int> ivec;
 ivec[0] = 42;
 ```
 
     不合法，ivec中没有元素，所以不能使用下标运算符访问其第一个元素，修改：
 
-```
+```cpp
 vector<int> ivec(1);
 ivec[0] = 42;
 ```
@@ -557,7 +557,7 @@ ivec[0] = 42;
 
 >如果想定义一个含有10个元素的vector对象，所有元素的值都是42，请列举出三种不同的实现方法。哪种方法更好呢？为什么？
 
-```
+```cpp
 //1.
 vector<int> ivec(10,42);
 
@@ -583,7 +583,7 @@ for(int i=0; i<10; i++)
 >读入一组整数并把它们存入一个vector对象，将每对相邻整数的和输出出来。改写你的程序，这次要求先输出第1个和最后1个元素的和，接着输出第2个和倒数第2个元素的和，以此类推。
 
     设置两个下标标志：b和e分别代表vector的首尾指针
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -630,7 +630,7 @@ int main()
 
 >请使用迭代器重做3.3.3节（第94页）的[第一个练习](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_16.cpp)。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -683,7 +683,7 @@ int main()
 >修改之前那个输出text第一段的程序，首先把text的第一段全都改成大写形式，然后再输出它。
 
     遍历每一行的所有字符并转换
-```
+```cpp
 for(auto it = text.begin(); it != text.end() && !it->empty(); ++it)
 {
     for(auto &c: *it)
@@ -696,7 +696,7 @@ for(auto it = text.begin(); it != text.end() && !it->empty(); ++it)
 
 >编写一段程序，创建一个含有10个整数的vector对象，然后使用迭代器将所有元素的值都变成原来的两倍。输出vector对象的内容，检验程序是否正确。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -730,7 +730,7 @@ int main()
 >请使用迭代器重做3.3.3节（第94页）的[最后一个练习](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_20.cpp)。
 
     下标标志替换为迭代器（注意，end()是尾后迭代器）
-```
+```cpp
 #include<iostream>
 #include<vector>
 #include<string>
@@ -778,7 +778,7 @@ int main()
 
 >3.3.3节（第93页）划分分数段的程序是使用下标运算符实现的，请利用迭代器修改该程序并实现相同的功能。
 
-```
+```cpp
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -865,7 +865,7 @@ unsigned buf_size = 1024;
 
 >下列数组中元素的值是什么？
 
-```
+```cpp
 string sa[10];
 int ia[10];
 int main(){
@@ -890,7 +890,7 @@ int main(){
 
 >指出下面代码中的索引错误。
 
-```
+```cpp
 constexpr size_t array_size = 10;
 int ia[array_size];
 for (size_t ix = 1; ix <= array_size; ++ix)
@@ -903,7 +903,7 @@ for (size_t ix = 1; ix <= array_size; ++ix)
 
 >编写一个程序，定义一个含有10个int的数组，令每个元素的值就是其下标值。
 
-```
+```cpp
 int main()
 {
     int arr[10];
@@ -919,7 +919,7 @@ int main()
 
 >将上一题刚刚创建的数组拷贝给另一个数组。利用vector重写程序，实现类似的功能。
 
-```
+```cpp
 #include<vector>
 using namespace std;
 int main()
