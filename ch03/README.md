@@ -1087,7 +1087,7 @@ int main()
 
 >编写一段程序，定义两个字符数组并用字符串字面值初始化它们；接着再定义一个字符数组存放前面两个数组连接后的结果。使用strcpy和strcat把前面两个数组的内容拷贝到第三个数组中。
 
-    定义一个足够大的数组来存放结果，由于ca1和ca2的大小已经固定，所以先将ca1拷贝到ca中，再将ca2拼接过去
+    定义一个足够大的数组ca来存放结果，由于ca1和ca2的大小已经固定，所以先将ca1拷贝到ca中，再将ca2拼接过去
 
 ```cpp
 #include<iostream>
@@ -1107,6 +1107,44 @@ int main()
 	++cp;
     }
     cout<<endl;
+    return 0;
+}
+```
+
+[练习3.41](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_41.cpp)
+
+>编写一段程序，用整型数组初始化一个vector对象。
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    int arr[] = {1,2,3,4,5};
+    vector<int> vec(begin(arr),end(arr));
+    return 0;
+}
+```
+
+[练习3.42](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_42.cpp)
+
+>编写一段程序，将含有整数元素的vector对象拷贝给一个整型数组。
+
+    vector不能直接初始化数组，需要对数组的每个元素进行赋值操作
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{	
+    vector<int> vec{1,2,3,4,5};
+    int arr[10];
+    for(decltype(vec.size()) i = 0; i<vec.size(); i++)
+    {
+	arr[i] = vec[i];
+    }
     return 0;
 }
 ```
