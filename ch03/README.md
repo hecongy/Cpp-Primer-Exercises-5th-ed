@@ -1031,4 +1031,82 @@ int main()
 
 [练习3.37](#)
 
->下面的程序是
+>下面的程序是何含义，程序的输出结果是什么？
+
+```cpp
+const char ca[] = {'h', 'e', 'l', 'l', 'o'};
+const char *cp = ca;
+while(*cp){
+    cout << *cp <<endl;
+    ++cp;
+}
+```
+
+    输出char数组ca的所有字符（每行一个）
+
+[练习3.38](#)
+
+>本节中我们提到，将两个指针相加不但是非法的，而且也没什么意义。请问为什么两个指针相加没什么意义？
+
+    两个指针相加依然得到一个整数，但是这个整数代表的地址空间是否存在以及其中存储的数据我们并不知道，所以指针相加没有意义
+    
+[练习3.39](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_39.cpp)
+
+>编写一段程序，比较两个string对象。再编写一段程序，比较两个C风格字符串的内容。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    //比较两个string对象
+    string s1 = "A string example";
+    string s2 = "A different string";
+    if(s1<s2)
+	cout<<"s1 < s2"<<endl;
+    else if(s1==s2)
+	cout<<"s1 = s2"<<endl;
+    else
+	cout<<"s1 > s2"<<endl;
+	
+    //比较两个C风格字符串
+    const char ca1[] = "A string example";
+    const char ca2[] = "A different string";
+    if(strcmp(ca1,ca2)<0)
+	cout<<"ca1 < ca2"<<endl;
+    else if(strcmp(ca1,ca2)==0)
+	cout<<"ca1 = ca2"<<endl;
+    else
+	cout<<"ca1 > ca2"<<endl;
+    return 0;
+}
+```
+
+[练习3.40](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch03/ex3_40.cpp)
+
+>编写一段程序，定义两个字符数组并用字符串字面值初始化它们；接着再定义一个字符数组存放前面两个数组连接后的结果。使用strcpy和strcat把前面两个数组的内容拷贝到第三个数组中。
+
+    定义一个足够大的数组来存放结果，由于ca1和ca2的大小已经固定，所以先将ca1拷贝到ca中，再将ca2拼接过去
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    const char ca1[] = "A string example";
+    const char ca2[] = "A different string";
+    char ca[100];
+    strcpy(ca,ca1);
+    strcat(ca,ca2);
+    const char* cp = ca;
+    while(*cp)
+    {
+	cout<<*cp;
+	++cp;
+    }
+    cout<<endl;
+    return 0;
+}
+```
