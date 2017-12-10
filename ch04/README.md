@@ -185,6 +185,102 @@ if (i == 1024)
 (b) ival++ && ival  
 (c) vec[ival++] <= vec[ival]
                            
-(a) ptr不是空指针且ptr指向的值不是0
-(b) ival不是0且ival不是0，此表达式的预期应该是ival递增后的值也不是0，修改：++ival && ival
-(c) vec\[ival] <= vec\[ival]，此表达式的结果一直为true，此表达式的预期应该是下标ival+1对应的值不小于下标ival对应的值，修改：vec\[++ival] <= vec\[ival]
+    (a) ptr不是空指针且ptr指向的值不是0
+    (b) ival不是0且ival不是0，此表达式的预期应该是ival递增后的值也不是0，修改：++ival && ival
+    (c) vec[ival] <= vec[ival]，此表达式的结果一直为true，此表达式的预期应该是下标ival+1对应的值不小于下标ival对应的值，修改：vec[++ival] <= vec[ival]
+    
+[练习4.20](#)
+
+>假设iter的类型是vector<string>::iterator，说明下面的表达式是否合法。如果合法，表达式的含义是什么？如果不合法，错在何处？  
+    (a) *iter++;  
+    (b) (*iter)++;  
+    (c) *iter.empty();  
+    (d) iter->empty();  
+    (e) ++*iter;  
+    (f) iter++->empty();
+    
+    (a)合法，返回iter指向的值并且将iter递增
+    (b)不合法，预期返回iter指向的值并且将其递增，但是string不可递增
+    (c)不合法，*运算符的优先级低于.运算符，而empty()是vector的成员函数，不能使用迭代器调用
+    (d)合法，->是成员运算符，string.empty()合法
+    (e)不合法，预期递增iter指向的值并且将结果返回，但是string不可递增
+    (f)合法，返回iter->empty()并且将iter递增
+
+[练习4.21](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch04/ex4_21.cpp)
+
+>编写一段程序，使用条件运算符从vector<int>中找到哪些元素的值是奇数，然后将这些奇数值翻倍。
+    
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    vector<int> vec{1,2,3,4,5,6,7,8,9,10};
+    for(auto &e : vec)
+    {
+	    e%2==1?e*=2:e=e;
+    }
+    return 0;
+}
+```
+
+[练习4.22](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch04/ex4_22.cpp)
+
+>本书的示例程序将成绩划分成high pass、pass和fail三种，扩展该程序使其进一步将60分到75分之间的成绩设定为low pass。要求程序包含两个版本：一个版本只使用条件运算符；另外一个版本使用1个或多个if语句。哪个版本更容易理解？为什么？
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    int grade;
+    cin>>grade;
+	
+    //版本1
+    cout<<((grade>90)?"high pass":(grade>75)?"pass":(grade>=60)?"low pass":"fail")<<endl;
+	
+    //版本2
+    if(grade>90)
+    {
+	    cout<<"high pass"<<endl;
+    }
+    if(grade<=90 && grade >75)
+    {
+	    cout<<"pass"<<endl;
+    }
+    if(grade<=75 && grade >=60)
+    {
+	    cout<<"low pass"<<endl;
+    }
+    if(grade<60)
+    {
+	    cout<<"fail"<<endl;
+    }
+    return 0;
+}
+```
+    当然是第二个版本容易理解了。。。
+
+[练习4.23](#)
+
+>因为运算符的优先级问题，下面这条表达式无法通过编译。根据4.12节中的表（第147页）指出它的问题在哪里？应该如何修改？
+
+```cpp
+string s = "word";
+string p1 = s + s[s.size() - 1] == 's' ? "" : "s";
+```
+
+    +运算符的优先级更高，所以先进行s + s[s.size() - 1]操作，而该表达式的值是string类型，不能和char类型值进行相等性判断，修改如下：
+
+```cpp
+string s = "word";
+string p1 = s + (s[s.size() - 1] == 's' ? "" : "s");
+```
+
+[练习4.24](#)
+
+>本节的示例程序将成绩划分成high pass、pass和fail三种，它的依据是条件运算符满足右结合律。加入条件运算符满足的是左结合律，求值过程将是怎样的？
+
+先判断最
