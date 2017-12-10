@@ -10,8 +10,8 @@
 (a) \*vec.begin()  
 (b) \*vec.begin() + 1
 
-    (a) \*(vec.begin())
-    (b) (\*(vec.begin())) + 1
+    (a) *(vec.begin())
+    (b) (*(vec.begin())) + 1
 
 [练习4.3](#)
 
