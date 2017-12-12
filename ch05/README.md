@@ -120,7 +120,8 @@ int main()
 ```diff
 //(a)
 if (ival1 != ival2)
-    ival1 = ival2; //缺少分号
+    + ival1 = ival2; //缺少分号
+    - ival1 = ival2
 else ival1 = ival2 = 0;
 
 //(b)
@@ -129,4 +130,17 @@ if (ival < minval)
     minval = ival;
     occurs = 1;
 + }
+
+//(c)
++ int ival; //扩大ival的作用域，否则if(!ival)非法
++ if (ival = get_value())
+- if (int ival = get_value())
+    cout << "ival = " << ival << endl;
+if (!ival)
+    cout << "ival = 0\n";
+
+//(d)
++ if (ival == 0) //应该使误把赋值当作相等性判断
+- if (ival = 0)
+    ival = get_value();
 ```
