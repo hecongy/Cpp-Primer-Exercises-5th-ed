@@ -144,3 +144,97 @@ if (!ival)
 - if (ival = 0)
     ival = get_value();
 ```
+
+[练习5.8](#)
+
+>什么是“悬垂else”？C++语言是如何处理else子句的？
+
+    if分支多于else分支时产生悬垂else，C++语言规定else与离它最近的尚未匹配的if匹配
+
+[练习5.9](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_9.cpp)
+
+>编写一段程序，使用一系列if语句统计从cin读入的文本中有多少元音字母。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    string s;
+    getline(cin,s);
+    int count = 0;
+	
+    for(auto c:s)
+    {
+	if(c=='a')
+	    count++;
+	if(c=='e')
+	    count++;
+	if(c=='i')
+	    count++;
+	if(c=='o')
+	    count++;
+        if(c=='u')
+	    count++;
+	if(c=='A')
+	    count++;
+	if(c=='E')
+	    count++;
+	if(c=='I')
+	    count++;
+	if(c=='O')
+	    count++;
+        if(c=='U')
+	    count++;
+    }
+	
+    cout<<"The number of vowels is: "<<count<<endl;
+    return 0;
+}
+```
+
+[练习5.10](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_10.cpp)
+
+>我们之前实现的统计元音字母的程序存在一个问题：如果元音字母以大写形式出现，不会被统计在内。编写一段程序，既统计元音字母的小写形式，也统计大写形式，也就是说，新程序遇到'a'和'A'都应该递增aCnt的值，以此类推。
+
+可以增加switch中的case，或者将大写字母（65~90）转换成小写字母（+32）
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{	
+    unsigned aCnt = 0, eCnt = 0, iCnt = 0, oCnt = 0, uCnt = 0;
+    char ch;
+    while(cin >> ch)
+    {
+	if(ch>=65 && ch<=90) //大写换小写
+	    ch += 32;
+	switch(ch){
+	    case 'a':
+                ++aCnt;
+		break;
+	    case 'e':
+		++eCnt;
+		break;
+	    case 'i':
+		++iCnt;
+                break;
+	   case 'o':
+	        ++oCnt;
+		break;
+	    case 'u':
+		++uCnt;
+		break;
+	}
+    }
+	
+    cout<<"Number of vowel a: \t"<<aCnt<<'\n'
+	<<"Number of vowel e: \t"<<eCnt<<'\n'
+	<<"Number of vowel i: \t"<<iCnt<<'\n'
+	<<"Number of vowel o: \t"<<oCnt<<'\n'
+	<<"Number of vowel u: \t"<<uCnt<<'\n';
+    return 0;
+}
+```
