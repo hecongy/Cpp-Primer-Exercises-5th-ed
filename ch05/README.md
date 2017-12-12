@@ -120,8 +120,8 @@ int main()
 ```diff
 //(a)
 if (ival1 != ival2)
-    + ival1 = ival2; //缺少分号
-    - ival1 = ival2
++   ival1 = ival2; //缺少分号
+-   ival1 = ival2
 else ival1 = ival2 = 0;
 
 //(b)
