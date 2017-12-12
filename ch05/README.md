@@ -124,8 +124,9 @@ if (ival1 != ival2)
 else ival1 = ival2 = 0;
 
 //(b)
-if (ival < minval) + { //增加块作用域，否则occurs = 1落在作用域外
+if (ival < minval) 
++ { //增加块作用域，否则occurs = 1落在作用域外
     minval = ival;
     occurs = 1;
-}
++ }
 ```
