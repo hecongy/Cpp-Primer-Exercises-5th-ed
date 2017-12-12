@@ -221,7 +221,7 @@ int main()
 	    case 'i':
 		++iCnt;
                 break;
-	   case 'o':
+	    case 'o':
 	        ++oCnt;
 		break;
 	    case 'u':
