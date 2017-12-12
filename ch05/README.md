@@ -36,9 +36,9 @@ while (val <= 10)
         if (!status) { /* ... \*/}
         
     (a) iter未初始化，修改：
-        string::iterator iter = s.begin();
-        while (iter != s.end()) { /* ... \*/ }  
+        string::iterator iter = s.begin();
+        while (iter != s.end()) { /* ... \*/ }  
     (b) status的作用域在while中，所以if中不能使用status，修改：
-        bool status;
-        while (status = find(word)) { /* ... */ }  
+        bool status;
+        while (status = find(word)) { /* ... */ }  
             if (!status) { /* ... */}
