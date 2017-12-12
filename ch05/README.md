@@ -161,11 +161,9 @@ if (!ival)
 using namespace std;
 int main()
 {
-    string s;
-    getline(cin,s);
     int count = 0;
-	
-    for(auto c:s)
+    char c;
+    while(cin>>c)
     {
 	if(c=='a')
 	    count++;
@@ -236,5 +234,180 @@ int main()
 	<<"Number of vowel o: \t"<<oCnt<<'\n'
 	<<"Number of vowel u: \t"<<uCnt<<'\n';
     return 0;
+}
+```
+
+[练习5.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_11.cpp)
+
+>修改统计元音字母的程序，使其也能统计空格、制表符和换行符的数量。
+
+    特殊字符需要使用getchar()获得
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{	
+    unsigned aCnt = 0, eCnt = 0, iCnt = 0, oCnt = 0, uCnt = 0, sCnt = 0, tCnt = 0, fCnt = 0;
+    char ch;
+    while(ch = getchar())
+    {
+	if(ch>=65 && ch<=90) //大写换小写
+	    ch += 32;
+	switch(ch){
+	    case 'a':
+                ++aCnt;
+		break;
+	    case 'e':
+		++eCnt;
+		break;
+	    case 'i':
+		++iCnt;
+                break;
+	    case 'o':
+	        ++oCnt;
+		break;
+	    case 'u':
+		++uCnt;
+		break;
+	    case 32:
+		++sCnt;
+		break;
+	    case '\t':
+		++tCnt;
+		break;
+	    case '\n':
+		++fCnt;
+		break;
+	}
+    }
+	
+    cout<<"Number of vowel a: \t"<<aCnt<<'\n'
+	<<"Number of vowel e: \t"<<eCnt<<'\n'
+	<<"Number of vowel i: \t"<<iCnt<<'\n'
+	<<"Number of vowel o: \t"<<oCnt<<'\n'
+	<<"Number of vowel u: \t"<<uCnt<<'\n'
+	<<"Number of space: \t"<<sCnt<<'\n'
+	<<"Number of tab: \t"<<tCnt<<'\n'
+	<<"Number of newline: \t"<<fCnt<<'\n';
+    return 0;
+}
+```
+
+[练习5.12](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_12.cpp)
+
+>修改统计元音字母的程序，使其能统计以下含有两个字符的字符序列的数量：ff、fl和fi。
+
+    首先过滤首字母是f的序列，不以f开头则跳过，然后使用switch检查第二个字符，使用flag标记输入的字母是首字母还是第二个字母
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{	
+    unsigned fCnt = 0, lCnt = 0, iCnt = 0;
+    bool flag = true; //flag标识是否是序列中的第一个字母
+    char ch;
+    while(cin >> ch)
+    {		
+	if(ch!='f' && flag) //不以f开头的第一个字母跳过
+	    continue;
+	if(ch=='f' && flag) //以f开头的第一个字母将flag置反并跳过
+	{
+	    flag = false;
+	    continue;
+	}		
+	switch(ch){
+	    case 'f':
+		++fCnt;
+		break;
+	    case 'l':
+		++lCnt;
+		break;
+	    case 'i':
+		++iCnt;
+		break;
+	}
+	flag=true; //序列处理完毕，flag置位
+    }
+	
+    cout<<"Number of ff: \t"<<fCnt<<'\n'
+	<<"Number of fl: \t"<<lCnt<<'\n'
+	<<"Number of fi: \t"<<iCnt<<'\n';
+    return 0;
+}
+```
+
+[练习5.13](#)
+
+>下面显示的每个程序都含有一个常见的编程错误，指出错误在哪里，然后修改它们。
+
+```diff
+//(a)
++ 没有break;
+unsigned aCnt = 0, eCnt = 0, iouCnt = 0;
+char ch = next_text();
+switch(ch) {
++   case 'a':
++       aCnt++;
++	break;
+-   case 'a': aCnt++;
++   case 'e':
++       eCnt++;
++	break;
+-   case 'e': eCnt++;
++   default:
++       iouCnt++;
++	break;
+-   default: iouCnt++;
+}
+
+//(b)
++ ix的作用域问题
+unsigned index = some_value();
++ int ix;
+switch (index) {
+    case 1:
++       ix = get_value();
+-       int ix = get_value();
+	ivec[ ix ] = index;
+	break;
+    default:
+        ix = ivec.size() - 1;
+	ivec[ ix ] = index;
+}
+
+//(c)
++ case标签必须是整型常量表达式（语法错误）
+unsigned evenCnt = 0, oddCnt = 0;
+int digit = get_num() % 10;
+switch (digit){
++   case (1,3,5,7,9):    
+-   case 1,3,5,7,9:
+        oddCnt++;
+	break;
++   case (2,4,6,8,10):
+-   case 2,4,6,8,10:
+        evenCnt+=;
+	break;
+}
+
+//(d)
++ case标签必须是整型常量表达式
++ constexpr unsigned ival = 512, jval = 1024, kval = 4096;
+- unsigned ival = 512, jval = 1024, kval = 4096;
+unsigned bufsize;
+unsigned swt = get_bufCnt();
+switch(swt){
+    case ival:
+        bufsize = ival * sizeof(int);
+	break;
+    case jval:
+        bufsize = jval * sizeof(int);
+	break;
+    case kval:
+        bufsize = kval * sizeof(int);
+	break;
 }
 ```
