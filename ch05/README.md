@@ -420,7 +420,7 @@ how now now now brown cow cow  
 
     定义变量记录当前连续出现次数最多单词maxWord（使用vector以防出现次数重复）及其出现的次数maxNum
     定义变量记录当前记录的单词curWord及其已经出现的次数curNum
-    当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum。
+    当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum
 
 ```cpp
 #include<iostream>
@@ -566,6 +566,61 @@ int main()
 	else
 	    cout<<"vec2 is prefix of vec1."<<endl;
     }
+    return 0;
+}
+```
+
+[练习5.18](#)
+
+>说明下列循环的含义并改正其中的错误。
+
+```diff
+//(a)
++ 意图输出两两整数的和，错在作用域
+do
++{
+    int v1, v2;
+    cout << "Please enter two numbers to sum:";
+    if (cin >> v1 >> v2)
+        cout << "Sum is: " << v1 + v2 << endl;
++}
+while(cin);
+
+//(b)
++ 错在将变量声明放在了do的条件部分
++ int ival;
+do {
+    // ...
++ } while (ival = get_response());
+- } while (int ival = get_response());
+
+//(c)
++ 错在作用域问题
++ int ival;
+do {
++   ival = get_response();
+-   int ival = get_response();
+} while (ival);
+```
+
+[练习5.19](#)
+
+>编写一段程序，使用do while循环重复执行下述任务：首先提示用户输入两个string对象，然后挑出较短的那个并输出它。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{	
+    do
+    {
+	string s1, s2;
+	cout<<"Please input two strings:"<<endl;
+	cin >> s1 >> s2;
+	cout<<"The shorter string is: "<< (s1<s2?s1:s2) << endl;
+    }
+    while (cin);
     return 0;
 }
 ```
