@@ -603,7 +603,7 @@ do {
 } while (ival);
 ```
 
-[练习5.19](#)
+[练习5.19](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_19.cpp)
 
 >编写一段程序，使用do while循环重复执行下述任务：首先提示用户输入两个string对象，然后挑出较短的那个并输出它。
 
@@ -622,5 +622,71 @@ int main()
     }
     while (cin);
     return 0;
+}
+```
+
+[练习5.20](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_20.cpp)
+
+>编写一段程序，从标准输入中读取string对象的序列直到连续出现两个相同的单词或者所有单词都读完为止。使用while循环一次读取一个单词，当一个单词连续出现两次时使用break语句终止循环。输出连续重复出现的单词，或者输出一个消息说明没有任何单词是连续重复出现的。
+
+    类似于练习5.14
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    string word1,word2;
+    cin>>word1;
+    while(cin>>word2)
+    {
+	if(word2==word1)
+	    break;
+	word1=word2;
+    }
+    if(word2==word1)
+	cout<<word1<<" appears twicely."<<endl;
+    else
+	cout<<"No word appears twicely."<<endl;
+    return 0;
+}
+```
+
+[练习5.21](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_21.cpp)
+
+>修改[5.5.1节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_20.cpp)（第171页）练习题的程序，使其找到的重复单词必须以大写字母开头。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    string word1,word2;
+    cin>>word1;
+    while(cin>>word2  && isupper(word2[0]))
+    {
+	if(word2==word1)
+	    break;
+	word1=word2;
+    }
+    if(word2==word1)
+	cout<<word1<<" appears twicely."<<endl;
+    else
+	cout<<"No word appears twicely."<<endl;
+    return 0;
+}
+```
+
+[练习5.22](#)
+
+>本节的最后一个例子跳回到begin，其实使用循环能更好地完成该任务。重写这段代码，注意不再使用goto语句。
+
+```cpp
+int sz = get_size();
+while(sz <= 0)
+{
+    sz = get_size();
 }
 ```
