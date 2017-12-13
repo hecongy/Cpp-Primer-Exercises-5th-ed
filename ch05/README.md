@@ -418,7 +418,7 @@ switch(swt){
 how now now now brown cow cow  
 那么输出应表明单词now连续出现了3次。  
 
-定义变量记录当前连续出现次数最多单词maxWord（使用vector以防出现次数重复）及其出现的次数maxNum，定义变量记录当前记录的单词curWord及其已经出现的次数curNum，当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum。
+    定义变量记录当前连续出现次数最多单词maxWord（使用vector以防出现次数重复）及其出现的次数maxNum，定义变量记录当前记录的单词curWord及其已经出现的次数curNum，当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum。
 
 ```cpp
 #include<iostream>
@@ -468,6 +468,101 @@ int main()
 	    cout<<e<<" ";
 	}
 	cout<<"repeat "<<maxNum<<" times."<<endl;
+    }
+    return 0;
+}
+```
+
+[练习5.15](#)
+
+>说明下列循环的含义并改正其中的错误。
+
+```diff
+//(a)
++ ix作用域问题
++ int ix;
++ for (ix = 0; ix !=sz; ++ix) { /* ... */ }
+- for (int ix = 0; ix !=sz; ++ix) { /* ... */ }
+if (ix != sz)
+    // ...
+
+//(b)
++ for不完整
+int ix;
++ for(ix = 0; ix != sz; ++ix) { /* ... */ }
+- for(ix != sz; ++ix) { /* ... */ }
+
+//(c)
++ for不正确
++ for (int ix = 0; ix != sz; ++ix, ++sz) { /* ... */ }
+- for (int ix = 0; ix != sz; ++ix; ++sz) { /* ... */ }
+```
+
+[练习5.16](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_16.cpp)
+
+>while循环特别适用于那种条件保持不变、反复执行操作的情况，例如，当未达到文件末尾时不断读取下一个值。for循环则更像是在按步骤迭代，它的索引值在某个范围内依次变。根据每种循环的习惯用法各自编写一段程序，然后分别用另一种循环改写。如果只能使用一种循环，你倾向于使用哪种呢？为什么？
+
+```cpp
+int main()
+{
+    int arr[] = {1,2,3,5,6,7,8,9};
+	
+    //for
+    for(int i=0;i<9;i++)
+    {
+	arr[i] = arr[i]+1;
+    }
+	
+    //while
+    int i = 0;
+    while(i<9)
+    {
+	arr[i] = arr[i]+1;
+    }
+    return 0;
+}
+```
+
+    都可以，while可以实现的for也可以实现，反之亦然
+
+[练习5.17](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_17.cpp)
+
+>假设有两个包含整数的vector对象，编写一段程序，检验其中一个vector对象是否是另一个的前缀。为了实现这一目标，对于两个不等长的vector对象，只需挑出长度较短的那个，把它的所有元素和另一个vector对象比较即可。例如，如果两个vector对象的元素分别是0、1、1、2和0、1、1、2、3、5、8，则程序的返回结果应该为0。
+
+```cpp
+#include<vector>
+#include<iostream>
+using namespace std;
+int main()
+{
+    vector<int> vec1 = {0,1,1,2,3,5,8};
+    vector<int> vec2 = {0,1,1,2};
+	
+    auto b1 = vec1.begin();
+    auto e1 = vec1.end();
+    auto b2 = vec2.begin();
+    auto e2 = vec2.end();
+
+    bool flag = true;
+    for(;b1<e1 && b2<e2;b1++,b2++)
+    {
+	if(*b1 != *b2)
+	{
+	    flag = false;
+	}
+    }
+    if(!flag)
+    {
+	cout<<"No."<<endl;
+    }
+    else
+    {
+	if(b1==e1 && b2==e2)
+	    cout<<"vec1 equals vec2."<<endl;
+	else if(b1==e1)
+	    cout<<"vec1 is prefix of vec2."<<endl;
+	else
+	    cout<<"vec2 is prefix of vec1."<<endl;
     }
     return 0;
 }
