@@ -690,3 +690,69 @@ while(sz <= 0)
     sz = get_size();
 }
 ```
+
+[练习5.23](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_23.cpp)
+
+>编写一段程序，从标准输入读取两个整数，输出第一个整数除以第二个整数的结果。
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int i1, i2;
+    cin>>i1>>i2;
+    if(i2==0)
+    {
+	cout<<"Wrong input."<<endl;
+	return 0;
+    }		
+    cout<<i1/i2<<endl;
+    return 0;
+}
+```
+
+[练习5.24](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_24.cpp)
+
+>修改你的程序，使得当第二个数是0时抛出异常。先不要catch子句，运行程序并真的为除数输入0，看看会发生什么？
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int i1, i2;
+    cin>>i1>>i2;	
+    cout<<i1/i2<<endl;
+    return 0;
+}
+```
+
+[练习5.25](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_25.cpp)
+
+>修改上一题的程序，使用try语句块去捕获异常。catch子句应该为用户输出一条提示信息，询问其是否输入新数并重新执行try语句块的内容。
+
+```cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int i1, i2;	
+    while(cin>>i1>>i2)
+    {
+	try
+	{
+	    cout<<i1/i2<<endl;
+	}
+	catch(exception err)
+	{
+            cout<<err.what()<<"\n Try again? Enter y or n"<<endl;
+            char c;
+	    cin>>c;
+	    if(!cin || c=='n')
+		break;
+	}
+    }
+    return 0;
+}
+```
