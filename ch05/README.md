@@ -418,7 +418,9 @@ switch(swt){
 how now now now brown cow cow  
 那么输出应表明单词now连续出现了3次。  
 
-    定义变量记录当前连续出现次数最多单词maxWord（使用vector以防出现次数重复）及其出现的次数maxNum，定义变量记录当前记录的单词curWord及其已经出现的次数curNum，当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum。
+    定义变量记录当前连续出现次数最多单词maxWord（使用vector以防出现次数重复）及其出现的次数maxNum
+    定义变量记录当前记录的单词curWord及其已经出现的次数curNum
+    当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum。
 
 ```cpp
 #include<iostream>
@@ -523,7 +525,7 @@ int main()
 }
 ```
 
-    都可以，while可以实现的for也可以实现，反之亦然
+    都可以，while可以实现的for也可以实现，反之亦然
 
 [练习5.17](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch05/ex5_17.cpp)
 
