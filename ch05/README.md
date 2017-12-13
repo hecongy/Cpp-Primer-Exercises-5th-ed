@@ -420,3 +420,55 @@ how now now now brown cow cow  
 
 定义变量记录当前连续出现次数最多单词maxWord（使用vector以防出现次数重复）及其出现的次数maxNum，定义变量记录当前记录的单词curWord及其已经出现的次数curNum，当出现与curWord不同的单词时结束curNum递增并与maxNum比较，如果curNum>maxNum时更新maxWord和maxNum。
 
+```cpp
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+int main()
+{	
+    vector<string> maxWords;
+    string curWord;	
+    int maxNum=1,curNum=1;
+    cout<<"Please input words:"<<endl;
+	
+    //获得第一个输入的单词
+    cin>>curWord;
+    maxWords.push_back(curWord);
+    string inputWord;
+    while(cin>>inputWord)
+    {
+	if(inputWord == curWord) //重复输入
+	{
+	    curNum++;
+	}
+	else //不重复输入
+	{
+	    if(curNum>maxNum) //当前最大
+	    {
+		maxWords={curWord};
+	        maxNum=curNum;
+	    }
+	    else if(curNum==maxNum) //当前最大之一
+	    {
+		maxWords.push_back(curWord);
+	    }	
+	    curNum = 1;
+	}
+	curWord = inputWord; //当前输入
+    }
+	
+    if(maxNum<=1)
+	cout<<"No word repeats.";
+    else
+    {
+	cout<<"Words: ";
+	for(auto e:maxWords)
+	{
+	    cout<<e<<" ";
+	}
+	cout<<"repeat "<<maxNum<<" times."<<endl;
+    }
+    return 0;
+}
+```
