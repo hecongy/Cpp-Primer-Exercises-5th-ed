@@ -163,3 +163,9 @@ extern int fact(int val);
 extern void printfact();
 extern void absolute(int val);
 ```
+
+[练习6.9]()
+
+>编写你自己的fact.cc和factMain.cc，这两个文件都应该包含上一小节的练习中编写的Chapter6.h头文件。通过这些文件，理解你的编译器是如何支持分离式编译的。
+
+    略
