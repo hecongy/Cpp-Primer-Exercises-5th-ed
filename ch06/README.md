@@ -69,7 +69,7 @@ int main()
 ```cpp
 #include<iostream>
 using namespace std;
-void fact()
+void printfact()
 {
     int val;
     cout<<"Please input a integer: ";
@@ -85,7 +85,7 @@ void fact()
 
 int main()
 {
-    fact();
+    printfact();
 }
 ```
 
@@ -111,4 +111,55 @@ int main()
     cin>>val;
     absolute(val);
 }
+```
+
+[练习6.6](#)
+
+>说明形参、局部变量以及局部静态变量的区别。编写一个函数，同时用到这三种形式。
+
+形参和局部静态变量都是局部变量，局部变量包含形参和函数体内部定义的变量。形参在函数调用时由实参初始化，函数体内部定义的变量在函数控制路径经过变量定义语句时创建该对象，形参和函数体内部定义的变量都在函数结束时销毁。局部静态变量在程序执行路径第一次经过对象定义语句时初始化，并且到程序终止才被销毁
+
+```cpp
+int test(int val1) //val1,形参
+{
+    int val2 = 0; //函数体内部定义的变量
+    static int val3 = 0; //局部静态变量
+}
+```
+
+[练习6.7](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_7.cpp)
+
+>编写一个函数，当它第一次被调用时返回0，以后每次调用返回值加1。
+
+```cpp
+#include<iostream>
+using namespace std;
+int get_value()
+{
+    static int val = 0;
+    return val++;
+}
+
+int main()
+{	
+    cout<<"Press y to continue, n to stop."<<endl;
+        char ch;
+    while(cin>>ch)
+    {
+	if(ch=='y')
+	    cout<<get_value()<<endl;
+	if(ch=='n')
+	    break;
+    }		
+}
+```
+
+[练习6.8](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_8.cpp)
+
+>编写一个名为Chapter6.h的头文件，令其包含6.1节练习（第184页）中的函数声明。
+
+```cpp
+extern int fact(int val);
+extern void printfact();
+extern void absolute(int val);
 ```
