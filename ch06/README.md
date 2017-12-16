@@ -515,6 +515,8 @@ int main(int argc, char *argv[])
 
 >编写一个程序，使其接受本节所示的选项；输出传递给main函数的实参的内容。
 
+    注意，此处不能使用标准库的begin和end方法，因为argv作为参数传入后已经变成了指针类型char**
+
 ```cpp
 #include<iostream>
 #include<string>
