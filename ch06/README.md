@@ -268,7 +268,59 @@ int main()
     s是引用类型是为了避免拷贝（string对象可能较大），s是常量引用是因为函数中不需要改变s的值
     occurs是引用是为了使用引用形参返回额外信息，occurs是普通引用是因为函数中需要改变occurs的值
     c不是引用类型是因为程序不需要通过引用类型返回额外信息
-    如果s是普通引用，程序依然合法，但是函数中可以改变s的值
+    如果s是普通引用，程序依然合法，但是函数中可以改变s的值；而且实参只能是string对象，不能是字面值常量
     如果occurs是常量引用，程序非法，因为函数中试图改变occurs的值
 
 [练习6.16](#)
+
+>下面的这个函数虽然合法，但是不算特别有用。指出它的局限性并设法改善。
+
+```cpp
+bool is_empty(string& s) { return s.empty(); }
+```
+
+    函数中没有改变s的值，因此形参可以使用常量引用
+    再者，函数中如果没有其他操作，不如删掉，需要时直接调用s.empty()
+
+[练习6.17](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_17.cpp)
+
+>编写一个函数，判断string对象中是否含有大写字母。编写另一个函数，把string对象全都改成小写形式。在这两个函数中你使用的形参类型相同吗？为什么？
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+//判断string对象中是否含有大写字母
+bool contains_capital(const string &s)
+{
+    for(auto c:s)
+    {
+	if(isupper(c))
+	    return true;
+    }
+    return false;
+}
+
+//把string对象全都改成小写形式
+void tolower(string &s)
+{
+    for(auto &c:s)
+    {
+	c = tolower(c);
+    }
+}
+
+int main()
+{
+    cout<<"Please input a string:"<<endl;
+    string s;
+    getline(cin,s);
+    cout<<"The input string "<<(contains_capital(s)?"contains":"doesn't contain")<<" capital letter."<<endl;
+    tolower(s);
+    cout<<"The lower case version of input string is: "<<s<<endl;
+    return 0;
+}
+```
+
+[]
