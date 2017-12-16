@@ -323,4 +323,20 @@ int main()
 }
 ```
 
-[]
+两个函数中形参的类型不同，因为操作类型不同，一个读（常量引用），一个写（非常量引用）
+
+[练习6.18](#)
+
+>为下面的函数编写函数声明，从给定的名字中推测函数具备的功能。  
+(a)名为compare的函数，返回布尔值，两个参数都是matrix类的引用。  
+(b)名为change_val的函数，返回vector<int>的迭代器，有两个参数：一个是int，另一个是vector<int>的迭代器。
+	
+``cpp
+//(a)比较两个matrix对象的大小
+bool compare(matrix&,matrix&);
+
+//(b)改变vector中某一位置（由int参数决定）元素的值
+vector<int>::iterator change_val(int,vector<int>::iterator);
+```
+
+[练习6.19](#)
