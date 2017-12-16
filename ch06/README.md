@@ -514,3 +514,20 @@ int main(int argc, char *argv[])
 [练习6.26](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_26.cpp)
 
 >编写一个程序，使其接受本节所示的选项；输出传递给main函数的实参的内容。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main(int argc, char * argv[])
+{
+    for(auto b = argv + 1; b < argv + argc; b++)
+    {
+	string s(*b);
+	cout<<s<<endl;
+    }
+	
+    return 0;
+}
+```
