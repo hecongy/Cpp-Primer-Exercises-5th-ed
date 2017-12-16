@@ -431,3 +431,56 @@ int main()
     return 0;
 }
 ```
+
+[练习6.23](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_23.cpp)
+
+>参考本节介绍的几个print函数，根据理解编写你自己的版本。依次调用每个函数使其输入下面定义的i和j：
+
+```cpp
+int i = 0, j[2] = {0, 1};
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+
+void print(const int a[], size_t begin, size_t end)
+{
+    for(auto i = begin; i<end; i++)
+    {
+	cout<<a[i]<<endl;
+    }
+}
+
+int main()
+{
+    int i = 0, j[2] = {0, 1};
+    print(&i, 0, 1);
+    print(j, 0 ,2);
+    return 0;
+}
+```
+
+[练习6.24](#)
+
+>描述下面这个函数的行为。如果代码中存在问题，请指出并改正。
+
+```cpp
+void print(const int ia[10])
+{
+    for (size_t i = 0; i != 10; ++i)
+        cout << ia[i] << endl;
+}
+```
+
+    print函数打印ia数组的前10个元素
+    问题：如果ia的大小小于10，程序将会产生异常。
+    应该使用管理指针形参的三种技术之一改正之，如：
+
+```cpp
+void print(const int ia[10], size_t size)
+{
+    for (size_t i = 0; i != size; ++i)
+        cout << ia[i] << endl;
+}
+```
