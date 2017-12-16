@@ -484,3 +484,33 @@ void print(const int ia[10], size_t size)
         cout << ia[i] << endl;
 }
 ```
+
+[练习6.25](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_25.cpp)
+
+>编写一个main函数，令其接受两个实参。把实参的内容连接成一个string对象并输出出来。
+
+    此处需要混用string对象和C风格字符串（第111页）
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    if(argc!=3)
+    {
+	cout<<"Wrong parameter number."<<endl;
+	return -1;
+    }
+	
+    string s(strcat(argv[1],argv[2]));
+    cout<<s<<endl;
+	
+    return 0;
+}
+```
+
+[练习6.26](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_26.cpp)
+
+>编写一个程序，使其接受本节所示的选项；输出传递给main函数的实参的内容。
