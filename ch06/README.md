@@ -374,4 +374,60 @@ sum(vec.begin(), vec.end(), 3.8);
     如果函数中不会改变参数的值，那么参数就应该是常量引用
     如果将原本应该是常量引用的参数设为了普通引用，在某些情况下无法使用函数，如参数是常量
 
-[练习6.21](#)
+[练习6.21](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_21.cpp)
+
+>编写一个函数，令其接受两个参数：一个是int型的数，另一个是int指针。函数比较int的值和指针所指的值，返回较大的那个。在该函数中指针的类型应该是什么？
+
+```cpp
+#include<iostream>
+using namespace std;
+int compare(int val, int const* p)
+{
+    if(val>*p)
+	return val;
+    else
+	return *p;
+}
+
+int main()
+{
+    cout<<"Please input two integers:"<<endl;
+    int val1, val2;
+    cin>>val1>>val2;
+    cout<<"The larger one is: "<<compare(val1,&val2)<<endl;
+    return 0;
+}
+```
+
+    只读操作，指针的类型是底层const（指向的对象的值不变）
+
+[练习6.22](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_22.cpp)
+
+>编写一个函数，令其交换两个int指针。
+
+    交换两个对象的值需要使用引用或指针实现，指针本身也是对象，所以使用指针的指针完成交换指针的功能
+
+```cpp
+#include<iostream>
+using namespace std;
+
+//交换两个int指针
+void swap(int **pp1, int **pp2)
+{
+    int *tmp = *pp1;
+    *pp1 = *pp2;
+    *pp2 = tmp;
+}
+
+int main()
+{
+    cout<<"Please input two integers:"<<endl;
+    int *p1, *p2, val1, val2;
+    cin>>val1>>val2;
+    p1=&val1;
+    p2=&val2;
+    swap(&p1,&p2);
+    cout<<"The output is: "<<*p1<<", "<<*p2<<endl;
+    return 0;
+}
+```
