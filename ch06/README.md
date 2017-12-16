@@ -173,3 +173,102 @@ extern void absolute(int val);
 [练习6.10](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_10.cpp)
 
 >编写一个函数，使用指针形参交换两个整数的值。在代码中调用该函数并输出交换后的结果，以此验证函数的正确性。
+
+```cpp
+#include<iostream>
+using namespace std;
+void swap(int *val1, int *val2)
+{
+    int tmp = *val1;
+    *val1=*val2;
+    *val2=tmp;
+}
+
+int main()
+{
+    cout<<"Please input two integers:"<<endl;
+    int val1,val2;
+    cin>>val1>>val2;
+    cout<<"The input is: "<<val1<<", "<<val2<<endl;
+    swap(&val1,&val2);
+    cout<<"The output is: "<<val1<<", "<<val2<<endl;
+    return 0;
+}
+```
+
+[练习6.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_11.cpp)
+
+>编写并验证你自己的reset函数，使其作用于引用类型的参数。
+
+```cpp
+#include<iostream>
+using namespace std;
+void reset(int &p)
+{
+    p=0;
+}
+
+int main()
+{
+    cout<<"Please input an integer:"<<endl;
+    int val;
+    cin>>val;
+    cout<<"The input is: "<<val<<endl;
+    reset(val);
+    cout<<"The output is: "<<val<<endl;
+    return 0;
+}
+```
+
+[练习6.12](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_12.cpp)
+
+>改写6.2.1节中的[练习6.10](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_10.cpp)（第188页）的程序，使用引用而非指针交换两个整数的值。你觉得哪种方法更易于使用呢？为什么？
+
+```cpp
+#include<iostream>
+using namespace std;
+void swap(int &val1, int &val2)
+{
+    int tmp = val1;
+    val1=val2;
+    val2=tmp;
+}
+
+int main()
+{
+    cout<<"Please input two integers:"<<endl;
+    int val1,val2;
+    cin>>val1>>val2;
+    cout<<"The input is: "<<val1<<", "<<val2<<endl;
+    swap(val1,val2);
+    cout<<"The output is: "<<val1<<", "<<val2<<endl;
+    return 0;
+}
+```
+
+引用更加方便，引用作为变量的别名，使用起来和变量一样
+
+[练习6.13](#)
+
+>假设T是某种类型的名字，说明以下两个函数声明的区别：一个是void f(T)，另一个是void f(&T)。
+
+    void f(T)是值传递，在函数内部改变T的值不会改变实参的值；void f(&T)是引用传递，在函数内部改变T的值会改变实参的值
+
+[练习6.14](#)
+
+>举一个形参应该是引用类型的例子，再举一个形参不能是引用类型的例子。
+
+    应该是引用类型：实参不能拷贝，因此要使用引用避免拷贝，如IO类型
+    不能是引用类型：无法将引用类型绑定到实参，如字面值常量
+
+[练习6.15](#)
+
+>说明find_char函数中的三个形参为什么是现在的类型，特别说明为什么s是常量引用而occurs是普通引用？为什么s和occurs是引用类型而c不是？如果令s是普通引用会发生什么情况？如果令occurs是常量引用会发生什么情况？
+
+    s是引用类型是为了避免拷贝（string对象可能较大），s是常量引用是因为函数中不需要改变s的值
+    occurs是引用是为了使用引用形参返回额外信息，occurs是普通引用是因为函数中需要改变occurs的值
+    c不是引用类型是因为程序不需要通过引用类型返回额外信息
+    如果s是普通引用，程序依然合法，但是函数中可以改变s的值
+    如果occurs是常量引用，程序非法，因为函数中试图改变occurs的值
+
+[练习6.16](#)
