@@ -533,3 +533,42 @@ int main(int argc, char * argv[])
     return 0;
 }
 ```
+
+[练习6.27](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_27.cpp)
+
+>编写一个函数，它的参数是initializer_list<int>类型的对象，函数的功能是计算列表中所有元素的和。
+	
+```cpp
+#include<iostream>
+#include<initializer_list>
+using namespace std;
+int sum(initializer_list<int> il)
+{
+    int sum = 0;
+    for(const auto elem : il)
+    {
+	sum += elem;
+    }
+    return sum;
+}
+
+int main()
+{
+    cout<<sum({1,2,3,4,5})<<endl;
+    return 0;
+}
+```
+
+[练习6.28](#)
+
+>在error_msg函数的第二个版本中包含ErrCode类型的参数，其中循环内的elem是什么类型？
+
+    const string&类型，使用引用类型可以避免拷贝string对象，更高效
+
+[练习6.29](#)
+
+>在范围for循环中使用initializer_list对象时，应该将循环控制变量声明成引用类型吗？为什么？
+
+    不需要，但是最好声明成引用类型，因为引用类型可以避免拷贝，使程序运行更加高效（第189页）
+
+[练习6.30]
