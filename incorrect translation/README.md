@@ -15,6 +15,6 @@
 3. **\[第6章]\[第213页]**
 
 ```diff
-- 练习6.42：作用于initializer_list对象的begin和end操作类似于vector对应的成员（参见3.4.1节，第195页）
-+ 作用于initializer_list对象的begin和end操作类似于vector对应的成员（参见3.4.1节，第95页）
+- 练习6.42：给make_plural函数（参见6.3.2节，第201页）的第二个形参赋予默认实参's'，利用新版本的函数输出单词success和failure的单数和复数形式。
++ 练习6.42：给make_plural函数（参见6.3.2节，第201页）的第三个形参赋予默认实参's'，利用新版本的函数输出单词success和failure的单数和复数形式。
 ```
