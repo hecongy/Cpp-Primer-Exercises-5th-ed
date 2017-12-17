@@ -707,3 +707,58 @@ double *reset(double *);
     (c)声明一个reset函数，参数和返回值类型都是double*
 
 [练习6.40](#)
+
+>下面的哪个声明是错误的？为什么？
+
+```cpp
+//(a)
+int ff(int a, int b = 0, int c = 0);
+
+//(b)
+char *init(int ht = 24, int wd, char bckgrnd);
+```
+
+    (b)非法，默认实参只能出现在参数列表的末尾
+
+[练习6.41](#)
+
+>下面的哪个调用是非法的？为什么？哪个调用虽然合法但显然于程序员的初衷不符？为什么？
+
+```cpp
+char *init(int ht, int wd = 80, char bckgrnd = ' ');
+//(a)
+init();
+
+//(b)
+init(24,10);
+
+//(c)
+init(14, '*')
+```
+
+    (a)非法，需要指定ht的值
+    (c)不符，初衷应该是将'*'赋值给bckgrnd，但最终赋值给了wd，因为wd在前
+
+[练习6.42](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_42.cpp)
+
+>给make_plural函数（参见6.3.2节，第201页）的第二个形参赋予默认实参's'，利用新版本的函数输出单词success和failure的单数和复数形式。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+string make_plural(size_t ctr, const string &word, const string &ending = "s")
+{
+    return (ctr > 1) ? word + ending : word;
+}
+
+int main()
+{
+    cout<<make_plural(1,"success","es")<<endl;
+    cout<<make_plural(2,"success","es")<<endl;
+    cout<<make_plural(1,"failure")<<endl;
+    cout<<make_plural(2,"failure")<<endl;
+    return 0;
+}
+```
