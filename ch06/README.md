@@ -959,3 +959,61 @@ int calc(const char*, const char*);
 int calc(char*, char*);
 int calc(char* const, char* const);
 ```
+
+[练习6.54](#)
+
+>编写函数的声明，令其接受两个int形参并且返回类型也是int；然后声明一个vector对象，令其元素是指向该函数的指针。
+
+```cpp
+int func(int, int);
+vector<decltype(func) *> vec;
+```
+
+[练习6.55](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_56.cpp)
+
+>编写4个函数，分别对两个int值执行加、减、乘、除运算；在上一题创建的vector对象中保存指向这些函数的指针。
+
+    参见练习6.56
+
+[练习6.56](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_56.cpp)
+
+>调用上述vector对象中的每个元素并输出其结果。
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int add(int i1, int i2)
+{
+    return i1 + i2;
+}
+int subtract(int i1, int i2)
+{
+    return i1 - i2;
+}
+int product(int i1, int i2)
+{
+    return i1 * i2;
+}
+int divide(int i1, int i2)
+{
+    return i1 / i2;
+}
+
+int main()
+{
+    vector<decltype(add) *> vec;
+    vec.push_back(add);
+    vec.push_back(subtract);
+    vec.push_back(product);
+    vec.push_back(divide);
+	
+    int i1 = 10, i2 = 2;
+	
+    for(auto elem:vec)
+    {
+	cout<<elem(i1,i2)<<endl;
+    }
+}
+```
