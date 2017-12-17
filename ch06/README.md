@@ -571,4 +571,79 @@ int main()
 
     不需要，但是最好声明成引用类型，因为引用类型可以避免拷贝，使程序运行更加高效（第189页）
 
-[练习6.30]
+[练习6.30](#)
+
+>编译第200页的str_subrange函数，看看你的编译器使如何处理函数中的错误的。
+
+    略
+
+[练习6.31](#)
+
+>什么情况下返回的引用无效？什么情况下返回常量的引用无效？
+
+返回局部对象的引用无效
+给常量引用函数的调用结果赋值，这时返回常量的引用无效
+
+[练习6.32](#)
+
+>下面的函数合法吗？如果合法，请说明其功能；如果合法，说明其功能；如果不合法，修改其中的错误并解释原因。
+
+```cpp
+int &get (int *array, int index)
+{
+    return array[index];
+}
+int main()
+{
+    int ia[10];
+    for (int i = 0; i != 10; ++i)
+        get(ia, i) = i;
+}
+```
+
+    合法，将数组ia的各个元素值设为其下标
+
+[练习6.33](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_33.cpp)
+
+>编写一个递归函数，输出vector对象的内容。
+
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void print(vector<int> vec, vector<int>::size_type index)
+{
+    if(index == 0)
+	cout<<vec[0]<<endl;
+    else
+    {
+	print(vec, index-1);
+	cout<<vec[index]<<endl;
+    }		
+}
+
+int main()
+{
+    vector<int> vec{1,2,3,4,5};
+    print(vec,vec.size()-1);
+}
+```
+
+[练习6.34](#)
+
+>如果factorial函数的停止条件如下所示，将会发生什么情况？
+
+```cpp
+if (val != 0)
+```
+
+    如果实参是一个负数，则程序无限递归无法返回，实际上负数的阶乘是1
+
+[练习6.35](#)
+
+>在调用factorial函数时，为什么我们传入的值是val-1而非val--？
+
+    val--可能（但不一定，见第123页求值顺序）会影响后面val的值而产生错误的结果
+
+[练习6.36]
