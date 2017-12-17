@@ -741,7 +741,7 @@ init(14, '*')
 
 [练习6.42](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_42.cpp)
 
->给make_plural函数（参见6.3.2节，第201页）的第二个形参赋予默认实参's'，利用新版本的函数输出单词success和failure的单数和复数形式。
+>给make_plural函数（参见6.3.2节，第201页）的第三个形参赋予默认实参's'，利用新版本的函数输出单词success和failure的单数和复数形式。
 
 ```cpp
 #include<iostream>
@@ -925,3 +925,5 @@ int main()
         ex6_51.cpp(19): note: could be 'void f(double,double)'
         ex6_51.cpp(14): note: or       'void f(int,int)'
         ex6_51.cpp(26): note: while trying to match the argument list '(double, int)'
+
+[练习6.52](#)
