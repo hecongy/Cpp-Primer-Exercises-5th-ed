@@ -685,3 +685,25 @@ decltype(odd) &arrPtr(int i)
 ```
 
 [练习6.39](#)
+
+>说明在下面的每组声明中第二条声明语句是何含义。如果有非法的声明，请指出来。
+
+```cpp
+//(a)
+int calc(int, int);
+int calc(const int, const int);
+
+//(b)
+int get();
+double get();
+
+//(c)
+int *reset(int *);
+double *reset(double *);
+```
+
+    (a)calc的const重载
+    (b)非法，返回值不能作为重载依据
+    (c)声明一个reset函数，参数和返回值类型都是double*
+
+[练习6.40](#)
