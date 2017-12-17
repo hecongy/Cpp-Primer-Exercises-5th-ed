@@ -801,4 +801,53 @@ inline bool isShorter(const string &s1, const string &s2)
 
     可以改写，但是意义不大，因为它的返回值不是常量
 
-[练习6.47](#)
+[练习6.47](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_47.cpp)
+
+>改写[6.3.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_33.cpp)（第205页）练习中使用递归输出vector内容的程序，使其有条件地输出与执行过程有关的信息。例如，每次调用时输出vector对象的大小。分别在打开和关闭调试器的情况下编译并执行这个程序。
+
+```cpp
+#define NDEBUG
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void print(vector<int> vec, vector<int>::size_type index)
+{	
+    if(index == 0)
+    {
+	#ifndef NDEBUG
+	    cout<<index<<": ";
+	#endif
+	cout<<vec[0]<<endl;
+    }		
+    else
+    {
+	print(vec, index-1);
+	#ifndef NDEBUG
+	    cout<<index<<": ";
+	#endif
+	cout<<vec[index]<<endl;
+    }		
+}
+
+int main()
+{
+    vector<int> vec{1,2,3,4,5};
+    print(vec,vec.size()-1);
+}
+```
+
+[练习6.48](#)
+
+>说明下面这个循环的含义，它对assert的使用合理吗？
+
+```cpp
+string s;
+while (cin >> s && s != sought) { } // 空函数体
+assert(cin);
+```
+
+    含义：判断程序是否一直输入sought，如果cin为false，说明输入结束且之前一直输入sought
+    合理，cin可以转换为bool类型
+
+[练习6.49](#)
