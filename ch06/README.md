@@ -851,3 +851,77 @@ assert(cin);
     合理，cin可以转换为bool类型
 
 [练习6.49](#)
+
+>什么是候选函数？什么是可行函数？
+
+    候选函数：调用对应的重载函数集中的函数
+    可行函数：候选函数中能被实参组调用的函数
+
+[练习6.50](#)
+
+>已知有第217页对函数f的声明，对于下面的每一个调用列出可行函数。其中哪个函数是最佳匹配？如果调用不合法，是因为没有可匹配的函数还是因为调用具有二义性？
+
+```cpp
+void f(); // 1
+void f(int); // 2
+void f(int, int); // 3
+void f(double, double = 3.14); // 4
+//(a)
+//可行函数：3、4，二义性
+f(2.56, 42)
+
+//(b)
+//可行函数：2、4，最佳匹配：2
+f(42)
+
+//(c)
+//可行函数：3、4，最佳匹配：3
+f(42, 0)
+
+//(d)
+//可行函数：3、4，最佳匹配：4
+f(2.56, 3.14)
+```
+
+[练习6.51](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/edit/master/ch06/ex6_51.cpp)
+
+>编写函数f的4个版本，令其各输出一条可以区分的消息。验证上一个练习的答案，如果你回答错了，反复研究本节的内容直到你弄清自己错在何处。
+
+```cpp
+#include<iostream>
+using namespace std;
+
+void f()
+{
+    cout<<"version I"<<endl;
+}
+
+void f(int i)
+{
+    cout<<"version II"<<endl;
+}
+
+void f(int i1, int i2)
+{
+    cout<<"version III"<<endl;
+}
+
+void f(double d1, double d2 = 3.14)
+{
+    cout<<"version IV"<<endl;
+}
+
+int main()
+{
+    //f(2.56, 42);
+    f(42);
+    f(42, 0);
+    f(2.56, 3.14);
+}
+```
+
+    (a)调用产生编译错误：
+        ex6_51.cpp(26): error C2666: 'f': 2 overloads have similar conversions
+        ex6_51.cpp(19): note: could be 'void f(double,double)'
+        ex6_51.cpp(14): note: or       'void f(int,int)'
+        ex6_51.cpp(26): note: while trying to match the argument list '(double, int)'
