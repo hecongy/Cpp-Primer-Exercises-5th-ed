@@ -762,3 +762,43 @@ int main()
     return 0;
 }
 ```
+
+[练习6.43](#)
+
+>你会把下面的哪个声明和定义放在头文件中？哪个放在源文件中？为什么？
+
+```cpp
+//(a)
+inline bool eq(const BigInt&, const BigInt&) {...}
+
+//(b)
+void putValues(int *arr, int size);
+```
+
+    (a)内联函数，放在头文件中
+    (b)普通函数，放在源文件中
+
+[练习6.44](#)
+
+>将6.2.2节（第189页）的isShorter函数改写成内联函数。
+
+```cpp
+inline bool isShorter(const string &s1, const string &s2)
+{
+    return s1.size() < s2.size();
+}
+```
+
+[练习6.45](#)
+
+>回顾在前面的练习中你编写的那些函数，它们应该是内联函数吗？如果是，将它们改写成内联函数；如果不是，说明原因。
+
+    规模较小、流程直接、频繁调用的函数应该是内联函数
+
+[练习6.46](#)
+
+>能把isShorter函数定义成constexpr函数吗？如果能，将它改写成constexpr函数；如果不能，说明原因。
+
+    可以改写，但是意义不大，因为它的返回值不是常量
+
+[练习6.47](#)
