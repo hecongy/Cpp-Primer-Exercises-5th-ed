@@ -927,3 +927,35 @@ int main()
         ex6_51.cpp(26): note: while trying to match the argument list '(double, int)'
 
 [练习6.52](#)
+
+>已知有如下声明，
+
+```cpp
+void manip(int, int);
+double dobj;
+```
+
+>请指出下列调用中每个类型转换的等级（参见6.6.1节，第219页）  
+(a) manip('a', 'z');  
+(b) manip(55.4, dobj);
+
+    (a)3
+    (b)4
+
+[练习6.53](#)
+
+>请说明下列每组声明中的第二条语句会产生什么影响，并指出哪些不合法（如果有的话）。
+
+```cpp
+//(a) 实参有一个是const类型的就要调用第二个函数
+int calc(int&, int&);
+int calc(const int&, const int&)
+
+//(b) 实参有一个是const类型的或者是字面值常量则调用第二个函数
+int calc(char*, char*);
+int calc(const char*, const char*);
+
+//(c) 非法，第二条语句属于重复声明
+int calc(char*, char*);
+int calc(char* const, char* const);
+```
