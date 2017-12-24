@@ -209,7 +209,8 @@ istream &read(istream &in, Sales_data &item)
 
 ostream &print(ostream &out, Sales_data &item)
 {
-    out<<"ISBN: "<<item.isbn()<<" sold out "<<item.units_sold<<" pieces, revenue is: "<<item.revenue<<", average price is: "<<item.avg_price();
+    out<<"ISBN: "<<item.isbn()<<" sold out "<<item.units_sold<<" pieces, revenue is: "<<item.revenue<<", average price is: "
+       <<item.avg_price();
     return out;
 }
 ```
@@ -256,7 +257,7 @@ int main()
     read函数要改变其参数的数据成员的值（输入），所以是普通引用
     print函数只需读取参数的数据成员而不需要改变它们，所以是常量引用
 
-[练习7.9](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/ex7_9.cpp)
+[练习7.9](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Person_ex7_9.cpp)
 
 >对于[7.1.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/ex7_4.cpp)（第233页）练习中的代码，添加读取和打印Person对象的操作。
 
@@ -303,4 +304,199 @@ if (read(read(cin, data1), data2))
 
     首先输入data1，再用返回的cin输入data2，相当于cin>>data1>>data2
 
-[练习7.11](#)
+[练习7.11](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/ex_7_11.cpp)
+
+>在你的[Sales_data类](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Sales_data_ex_7_11.h)中添加构造函数，然后编写一段程序令其用到每个构造函数。
+
+    由于只接受一个istream作为参数的构造函数需要使用read函数，而read又以Sales_data作为参数，由于它们的声明关系，该构造函数需要先声明，再定义
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+struct Sales_data {
+
+    Sales_data() = default;
+    Sales_data(const string &s):bookNo(s){}
+    Sales_data(const string &s, unsigned u, double p):
+	        bookNo(s), units_sold(u), price(p), revenue(u*p){}
+    Sales_data(istream &in);
+		
+    string bookNo;
+    unsigned units_sold = 0;
+    double price = 0.0;
+    double revenue = 0.0;
+		
+    Sales_data& combine(const Sales_data &data)
+    {
+	units_sold += data.units_sold;
+	revenue += data.revenue;
+	return *this;
+    }
+		
+    string isbn() const
+    {
+	return bookNo;
+    }
+		
+    double avg_price() const
+    {
+	if(units_sold)
+	    return revenue/units_sold;
+	else
+	    return 0;
+    }
+};
+
+Sales_data add(const Sales_data &item1, const Sales_data &item2)
+{
+    Sales_data sum = item1;
+    return sum.combine(item2);
+}
+
+istream &read(istream &in, Sales_data &item)
+{
+    double price = 0.0;
+    in >> item.bookNo >>item.units_sold >>item.price;
+    item.revenue = item.units_sold * item.price;
+    return in;
+}
+
+ostream &print(ostream &out, Sales_data &item)
+{
+    out<<"ISBN: "<<item.isbn()<<" sold out "<<item.units_sold<<" pieces, revenue is: "<<item.revenue<<", average price is: "   
+       <<item.avg_price();
+    return out;
+}
+
+Sales_data::Sales_data(istream &in)
+{
+    read(in, *this);
+}
+```
+
+```cpp
+#include<iostream>
+#include "Sales_data_ex_7_11.h"
+using namespace std;
+
+int main()
+{
+    Sales_data s1;
+    Sales_data s2("bookno1");
+    Sales_data s3("bookno1", 2, 1.5);
+    Sales_data s4(cin);
+	
+    print(cout,s1);
+    cout<<endl;
+    print(cout,s2);
+    cout<<endl;
+    print(cout,s3);
+    cout<<endl;
+    print(cout,s4);
+    cout<<endl;
+}
+```
+
+[练习7.12](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Sales_data_ex_7_12.h)
+
+>把只接受一个istream作为参数的构造函数定义移到类的内部。
+
+    没有友元，只能出此下策
+
+```cpp
+Sales_data(istream &in)
+{
+    double price = 0.0;
+    in >> bookNo >>units_sold >>price;
+    revenue = units_sold * price;
+}
+```
+
+[练习7.13](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/ex_7_13.cpp)
+
+>使用istream构造函数重写第229页的程序。
+
+    需要注意，构造函数没有返回值
+
+```cpp
+#include<iostream>
+#include "Sales_data_ex_7_12.h"
+using namespace std;
+int main()
+{	
+
+    if(cin){	
+	Sales_data total(cin);
+        while(cin){
+	    Sales_data trans(cin);
+            if(total.isbn() == trans.isbn())
+		total = total.combine(trans);
+	    else{
+                print(cout,total);
+		total = trans;
+	    }
+	}
+	print(cout,total);
+    }else{
+
+	std::cerr << "No data?!" << std::endl;
+	return -1;
+    }
+    return 0;
+}
+```
+
+[练习7.14](#)
+
+>编写一个构造函数，令其用我们提供的类内初始值显式地初始化成员。
+
+    略
+
+[练习7.15](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Person_ex7_15.cpp)
+
+>为你的Person类添加正确的构造函数。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+struct Person{
+	    
+	Person() = default;
+	Person(const string n):name(n){}
+	Person(const string n, const string a):name(n),address(a){}
+	Person(istream&);
+		
+	string name;
+	string address;
+
+	string get_name() const
+	{
+	    return name;
+	}
+	string get_address() const
+	{
+	    return address;
+	}
+};
+
+istream &read(istream &in, Person &person)
+{
+    in>>person.name>>person.address;
+    return in;
+}
+
+ostream &print(ostream &out, const Person &person)
+{
+    out<<person.name<<" "<<person.address;
+    return out;
+}
+
+Person::Person(istream &in)
+{
+    read(in, *this);
+}
+```
