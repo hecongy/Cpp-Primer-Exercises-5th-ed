@@ -248,3 +248,59 @@ int main()
     return 0;
 }
 ```
+
+[练习7.8](#)
+
+>为什么read函数将其Sales_data参数定义成普通的引用，而print将其参数定义成常量引用？
+
+    read函数要改变其参数的数据成员的值（输入），所以是普通引用
+    print函数只需读取参数的数据成员而不需要改变它们，所以是常量引用
+
+[练习7.9](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/ex7_9.cpp)
+
+>对于[7.1.2节](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/ex7_4.cpp)（第233页）练习中的代码，添加读取和打印Person对象的操作。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+struct Person{
+    public:
+        string name;
+	string address;
+
+	string get_name() const
+	{
+	    return name;
+	}
+	string get_address() const
+	{
+	    return address;
+	}
+};
+
+istream &read(istream &in, Person &person)
+{
+    in>>person.name>>person.address;
+    return in;
+}
+
+ostream &print(ostream &out, const Person &person)
+{
+    out<<person.name<<" "<<person.address;
+    return out;
+}
+```
+
+[练习7.10](#)
+
+>在下面这条if语句中，条件部分的作用是什么？
+
+```cpp
+if (read(read(cin, data1), data2))
+```
+
+    首先输入data1，再用返回的cin输入data2，相当于cin>>data1>>data2
+
+[练习7.11](#)
