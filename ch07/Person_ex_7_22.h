@@ -2,15 +2,21 @@
 #include<string>
 using namespace std;
 
-struct Person{
+class Person{
 	   
+	    friend istream &read(istream&, Person&);
+		
 		string name;
 		string address;
-
+		
+	public:
 		Person() = default;
 		Person(const string n):name(n){}
 		Person(const string n, const string a):name(n),address(a){}
-		Person(istream&);
+		Person(istream&)
+		{
+			read(in, *this);
+		}
 	    
 	    string get_name() const
 		{
@@ -32,9 +38,4 @@ ostream &print(ostream &out, const Person &person)
 {
 	out<<person.name<<" "<<person.address;
 	return out;
-}
-
-Person::Person(istream &in)
-{
-	read(in, *this);
 }
