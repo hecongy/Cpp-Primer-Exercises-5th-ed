@@ -654,3 +654,61 @@ ostream &print(ostream &out, const Person &person)
     return out;
 }
 ```
+
+[练习7.23](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Screen.h)
+
+>编写你自己的Screen类。
+
+    见下
+
+[练习7.24](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Screen.h)
+
+>给你的Screen类添加三个构造函数：一个默认构造函数；另一个构造函数接受宽和高的值，然后将contents初始化成给定数量的空白；第三个构造函数接受宽和高的值以及一个字符，该字符作为初始化之后屏幕的内容。
+
+```cpp
+#include<string>
+using namespace std;
+
+class Screen
+{
+    public:
+        string::size_type pos;
+	Screen()=default;
+	Screen(pos h, pos w):height(h),width(w),contents(h*w, ''){}
+	Screen(pos h, pos w, char c):height(h),width(w),contents(h*w, c){}
+	char get() const
+	{
+	    return contents[cursor];
+	}
+	Screen &move(pos r, pos c)
+	{
+	    cursor = r*width + c;
+	    return *this;
+	}
+		
+    private:
+        pos height=0, width=0, cursor=0;
+	string contents;	
+}
+```
+
+[练习7.25](#)
+
+>Screen能安全地依赖于拷贝和赋值操作的默认版本吗？如果能，为什么？如果不能，为什么？
+
+可以，Screen的数据成员都是可以使用默认版本的拷贝和赋值操作的
+
+[练习7.26](#)
+
+>将Sales_data::avg_price定义成内联函数。
+
+```cpp
+inline double avg_price() const
+{
+    if(units_sold)
+	return revenue/units_sold;
+    else
+	return 0;
+}
+```
+
