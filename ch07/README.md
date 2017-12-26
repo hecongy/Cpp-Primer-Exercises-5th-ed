@@ -785,7 +785,7 @@ class Screen
 
 >如果move、set和display函数的返回类型不是Screen&而是Screen，则在上一个练习中将会发生什么情况？
 
-两次display的内容不同，因为move、set和display返回的都是当前对象的拷贝，而不是当前对象的引用
+    两次display的内容不同，因为move、set和display返回的都是当前对象的拷贝，而不是当前对象的引用
 
 [练习7.29](#)
 
