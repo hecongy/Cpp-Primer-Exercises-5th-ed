@@ -672,9 +672,9 @@ using namespace std;
 class Screen
 {
     public:
-        string::size_type pos;
+        typedef string::size_type pos;
 	Screen()=default;
-	Screen(pos h, pos w):height(h),width(w),contents(h*w, ''){}
+	Screen(pos h, pos w):height(h),width(w),contents(h*w, ' '){}
 	Screen(pos h, pos w, char c):height(h),width(w),contents(h*w, c){}
 	char get() const
 	{
@@ -689,7 +689,7 @@ class Screen
     private:
         pos height=0, width=0, cursor=0;
 	string contents;	
-}
+};
 ```
 
 [练习7.25](#)
@@ -712,3 +712,90 @@ inline double avg_price() const
 }
 ```
 
+[练习7.27](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Screen_ex_27.h)
+
+>给你自己的Screen类添加move、set和display函数，通过执行下面的代码检验你的类是否正确。
+
+```cpp
+Screen myScreen(5, 5, 'X');
+myScreen.move(4, 0).set('#').display(cout);
+cout << "\n";
+myScreen.display(cout);
+cout << "\n";
+```
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Screen
+{
+    public:
+        typedef string::size_type pos;
+	Screen()=default;
+	Screen(pos h, pos w):height(h),width(w),contents(h*w, ' '){}
+	Screen(pos h, pos w, char c):height(h),width(w),contents(h*w, c){}
+	char get() const
+	{
+	    return contents[cursor];
+	}
+	Screen &move(pos r, pos c)
+	{
+	    cursor = r*width + c;
+	    return *this;
+	}
+		
+	inline Screen &set(char c)
+	{
+	    contents[cursor] = c;
+	    return *this;
+	}
+	inline Screen &set(pos r, pos c, char ch)
+	{
+	    contents[r*width+c] = ch;
+	    return *this;
+	}
+		
+	Screen &display(ostream &os)
+	{
+	    do_display(os);
+	    return *this;
+	}
+		
+	const Screen &display(ostream &os) const
+	{
+	    do_display(os);
+	    return *this;
+	}
+		
+		
+    private:
+	pos height=0, width=0, cursor=0;
+	string contents;
+	void do_display(ostream &os) const
+	{
+	    os<<contents;
+	}
+	
+};
+```
+
+[练习7.28](#)
+
+>如果move、set和display函数的返回类型不是Screen&而是Screen，则在上一个练习中将会发生什么情况？
+
+两次display的内容不同，因为move、set和display返回的都是当前对象的拷贝，而不是当前对象的引用
+
+[练习7.29](#)
+
+>修改你的Screen类，令move、set和display函数返回Screen并检查程序的运行结果，在上一个练习中你的推测正确吗？
+
+    Yes
+
+[练习7.30](#)
+
+>通过this指针使用成员的做法虽然合法，但是有点多余。讨论显式地使用指针访问成员的优缺点。
+
+    优点：程序可读性强
+    缺点：多余
