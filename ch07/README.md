@@ -525,3 +525,132 @@ Person::Person(istream &in)
 >在你的Person类中，你将把哪些成员声明成public的？哪些成员声明成private的？解释你这样做的原因。
 
     目前name和address成员都是public的，因为有read函数需要写入它们的值，如果只使用构造函数而不使用read函数，则name和address都应是private的
+
+[练习7.20](#)
+
+>友元在什么时候有用？请分别列举出使用友元的利弊。
+
+友元在非类成员函数需要访问类的私有成员时使用
+友元方便非类成员函数访问类的私有成员，但同时也破坏了封装
+
+[练习7.21](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Sales_data_ex_7_21.h)
+
+>修改你的Sales_data类使其隐藏实现的细节。你之前编写的关于Sales_data操作的程序应该继续使用，借助类的新定义重新编译该程序，确保其工作正常。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Sales_data {
+		
+    friend istream &read(istream&, Sales_data&);
+
+    Sales_data() = default;
+    Sales_data(const string &s):bookNo(s){}
+    Sales_data(const string &s, unsigned u, double p):
+              bookNo(s), units_sold(u), price(p), revenue(u*p){}
+			
+    public:
+	Sales_data(istream &in)
+	{
+	    double price = 0.0;
+	    in >> bookNo >>units_sold >>price;
+	    revenue = units_sold * price;
+        }
+		
+	string bookNo;
+	unsigned units_sold = 0;
+	double price = 0.0;
+	double revenue = 0.0;
+		
+	Sales_data& combine(const Sales_data &data)
+	{
+	    units_sold += data.units_sold;
+	    revenue += data.revenue;
+	    return *this;
+	}
+		
+	string isbn() const
+	{
+	    return bookNo;
+	}
+		
+	double avg_price() const
+	{
+	    if(units_sold)
+		return revenue/units_sold;
+	    else
+		return 0;
+	}
+};
+
+Sales_data add(const Sales_data &item1, const Sales_data &item2)
+{
+    Sales_data sum = item1;
+    return sum.combine(item2);
+}
+
+istream &read(istream &in, Sales_data &item)
+{
+    double price = 0.0;
+    in >> item.bookNo >>item.units_sold >>item.price;
+    item.revenue = item.units_sold * item.price;
+    return in;
+}
+
+ostream &print(ostream &out, Sales_data &item)
+{
+    out<<"ISBN: "<<item.isbn()<<" sold out "<<item.units_sold<<" pieces, revenue is: "<<item.revenue<<", average price is: "   
+       <<item.avg_price();
+    return out;
+}
+```
+
+[练习7.22](https://github.com/CharlesHe21/Cpp-Primer-Exercises-5th-ed/blob/master/ch07/Person_ex_7_22.h)
+
+>修改你的Person类使其隐藏实现的细节。
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Person{
+	   
+    friend istream &read(istream&, Person&);
+		
+    string name;
+    string address;
+		
+    public:
+	Person() = default;
+	Person(const string n):name(n){}
+	Person(const string n, const string a):name(n),address(a){}
+	Person(istream&)
+	{
+	    read(in, *this);
+	}
+	    
+	string get_name() const
+	{
+	    return name;
+	}
+	string get_address() const
+	{
+	    return address;
+	}
+};
+
+istream &read(istream &in, Person &person)
+{
+    in>>person.name>>person.address;
+    return in;
+}
+
+ostream &print(ostream &out, const Person &person)
+{
+    out<<person.name<<" "<<person.address;
+    return out;
+}
+```
