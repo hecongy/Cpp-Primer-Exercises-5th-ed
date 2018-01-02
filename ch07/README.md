@@ -822,6 +822,7 @@ class Y
 ```cpp
 #include<iostream>
 #include<string>
+#include<vector>
 using namespace std;
 
 class Window_mgr
@@ -891,3 +892,19 @@ void Window_mgr::clear(ScreenIndex i)
     s.contents = string(s.height * s.width, ' ');
 }
 ```
+
+[练习7.33](#)
+
+>如果我们给Screen添加一个如下所示的size成员将会发生什么情况？如果出现了问题，请尝试修改它。
+
+```diff
++ Screen::pos Screen::size() const
+- pos Screen::size() const
+{
+    return height * width;
+}
+```
+
+    pos是Screen内定义的别名，在类外使用需要指明它是哪个类的成员
+
+[练习7.34](#)
