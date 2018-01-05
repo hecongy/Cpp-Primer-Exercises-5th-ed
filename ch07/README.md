@@ -934,3 +934,71 @@ private:
     return val;
 }
 ```
+
+[练习7.36](#)
+
+>下面的初始值是错误的，请找出问题所在并尝试修改它。
+
+```diff
+struct X {
++ 初始化顺序和定义顺序相同
++   X (int i, int j): base(i), rem(i % j) {}
+-   X (int i, int j): base(i), rem(base % j) {}
+    int rem, base;
+};
+```
+
+[练习7.37](#)
+
+>使用本节提供的Sales_data类，确定初始化下面的变量时分别使用了哪个构造函数，然后罗列出每个对象所有数据成员的值。
+
+```cpp
+Sales_data first_item(cin); // 第3，数据成员值由输入决定
+int main() {
+    Sales_data next; // 第1，bookNo为""
+    Sales_data last("9-999-99999-9"); //第 1，bookNo为"9-999-99999-9"
+}
+```
+
+[练习7.38](#)
+
+>有些情况下我们希望提供cin作为接受istream&参数的构造函数的默认实参，请声明这样的构造函数。
+
+```cpp
+//以Sales_data构造函数为例
+Sales_data(std::istream &is = std::cin) { read(is, *this); }
+```
+
+[练习7.39](#)
+
+>如果接受string的构造函数和接受istream&的构造函数都使用默认实参，这种行为合法吗？如果不，为什么？
+
+    不合法，造成构造函数的二义性
+
+[练习7.40](#)
+
+>从下面的抽象概念中选择一个（或者你自己指定一个），思考这样的类需要哪些数据成员，提供一组合理的构造函数并阐明这样做的原因。  
+(a)Book  
+(b)Date  
+(c)Employee  
+(d)Vehicle  
+(e)Object  
+(f)Tree  
+
+```cpp
+class Book {
+private:
+    string bookNo; // ISBN号
+    vector<string> author; // 作者（可能有多个）
+    string publisher; // 出版社
+    int version; // 版本号
+    Date publishDate; // 出版时间
+    double price; // 定价
+    int pageSize; // 页数
+    //...
+public:
+    Book(std::istream &is = std::cin) { read(is, *this); }
+    Book(string s = ""):bookNo(s) {}
+    //...
+};
+```
