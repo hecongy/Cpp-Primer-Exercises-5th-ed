@@ -998,7 +998,24 @@ private:
     //...
 public:
     Book(std::istream &is = std::cin) { read(is, *this); }
-    Book(string s = ""):bookNo(s) {}
+    Book(string b, vector<string> a, string p, int v, Date pd, double pr, int ps )
+        : bookNo(b), author(a), publisher(p), version(v), publishDate(pd), price(pr), pageSize(ps) {}
+    Book() {}
     //...
 };
 ```
+
+[练习7.41](#)
+
+>使用委托构造函数重新编写你的Sales_data类，给每个构造函数体添加一条语句，令其一旦执行就打印一条信息。用各种可能的方式分别创建Sales_data对象，认真研究每次输出的信息直到你确实理解了委托构造函数的执行顺序。
+
+    略
+
+[练习7.42](#)
+
+>对于你在利纳希7.40（参见7.5.1节，第261页）中编写的类，确定哪些构造函数可以使用委托。如果可以的话，编写委托构造函数。如果不可以，从抽象概念列表中重新选择一个你认为可以使用委托构造函数的，为挑选出的这个概念编写类定义。
+
+```cpp
+Book(): Book("", {""}, "", 1, "", 0, 0) {}
+```
+
