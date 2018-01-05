@@ -908,3 +908,29 @@ void Window_mgr::clear(ScreenIndex i)
     pos是Screen内定义的别名，在类外使用需要指明它是哪个类的成员
 
 [练习7.34](#)
+
+>如果我们把第256页Screen类的pos的typedef放在类的最后一行会发生什么情况？
+
+    显示pos未定义
+
+[练习7.35](#)
+
+>解释下面代码的含义，说明其中的Type和initVal分别使用了哪个定义。如果代码存在错误，尝试修改它。
+
+```diff
+typedef string Type;
+Type initVal();
+class Exercise {
+public:
+    typedef double Type;
+    Type setVal(Type); // typedef double Type
+    Type initVal(); // typedef double Type
+private:
+    int val;
+};
++ Exercise::Type Exercise::setVal(Type parm) {
+- Type Exercise::setVal(Type parm) { // typedef string Type & typedef double Type
+    val = parm + initVal();
+    return val;
+}
+```
